@@ -94,7 +94,7 @@ public class Glyph extends DLList<Shape>{
      */
     public Glyph(Song song, int x, int y) {
         this.song = song;
-        listenLike = new int[6];
+        listenLike = new int[8];
         border = new Shape(x, y, WIDTH, HEIGHT, Color.WHITE);
         border.setForegroundColor(Color.BLACK);
         title = new TextShape(x, y + 10, song.getSongTitle());   
