@@ -5,8 +5,8 @@ package musicpreference;
 
 /**
  * @author aphen
- *
+ * @version <4/17/17>
  */
-public class Person {
-
+public enum Category {
+    Hobby, Major, Region;
 }
