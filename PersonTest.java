@@ -1,4 +1,4 @@
-package itemclasses;
+package musicpreference;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ public class PersonTest extends student.TestCase {
     public void testGets() {
         assertEquals(Hobby.ART, person.getHobby());
         assertEquals(Major.COMPUTER_SCIENCE, person.getMajor());
-        assertEquals(State.SOUTHEAST, person.getState());
+        assertEquals(Region.SOUTHEAST, person.getRegion());
         assertTrue(person.getValid());
     }
 
@@ -43,7 +43,7 @@ public class PersonTest extends student.TestCase {
         Person person1 = new Person(person1String);
         assertEquals(Hobby.MUSIC, person1.getHobby());
         assertEquals(Major.OTHER_ENGE, person1.getMajor());
-        assertEquals(State.NORTHEAST, person1.getState());
+        assertEquals(Region.NORTHEAST, person1.getRegion());
         assertTrue(person1.getValid());
 
         ArrayList<Integer> list = person1.getAnswers();
@@ -74,22 +74,22 @@ public class PersonTest extends student.TestCase {
         
         assertEquals(Major.MATH_CMDA, person2.getMajor());
         assertEquals(Hobby.SPORTS, person2.getHobby());
-        assertEquals(State.OTHER_US, person2.getState());
+        assertEquals(Region.OTHER_US, person2.getRegion());
         assertTrue(person2.getValid());
         
         assertEquals(Major.MATH_CMDA, person3.getMajor());
         assertEquals(Hobby.SPORTS, person3.getHobby());
-        assertEquals(State.OTHER_US, person3.getState());
+        assertEquals(Region.OTHER_US, person3.getRegion());
         assertTrue(person3.getValid());
         
         assertEquals(Major.OTHER_ENGE, person4.getMajor());
         assertEquals(Hobby.READ, person4.getHobby());
-        assertEquals(State.SOUTHEAST, person4.getState());
+        assertEquals(Region.SOUTHEAST, person4.getRegion());
         assertTrue(person4.getValid());
         
         assertEquals(Major.OTHER, person5.getMajor());
         assertEquals(Hobby.MUSIC, person5.getHobby());
-        assertEquals(State.OTHER, person5.getState());
+        assertEquals(Region.OTHER, person5.getRegion());
         assertTrue(person5.getValid());
         
         
@@ -111,13 +111,5 @@ public class PersonTest extends student.TestCase {
         assertFalse(person7.getValid());
         assertFalse(person8.getValid());
         assertFalse(person9.getValid());
-        
-        
-        
-        
-        
-        
-        
-        
     }
 }

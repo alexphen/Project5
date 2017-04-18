@@ -30,16 +30,17 @@ public class GUIDisplayWindow {
     private DLList<Shape> key;
     private GlyphList glyphs;
     private int page;
+    private boolean started = false;
 
     private static int STARTX = 50;
     private static int STARTY = 50;
-    private static int increment = 50;
-    private static final Glyph DEFAULT = new Glyph(STARTX, STARTY, 100,
-        GlyphList.defaultSong);
-    private static final Glyph DEFAULT1 = new Glyph(STARTX, STARTY, 100,
-        GlyphList.defaultSong);
-    private static final Glyph DEFAULT2 = new Glyph(STARTX, STARTY, 100,
-        GlyphList.defaultSong);
+    private static int increment = 350;
+    private static final Glyph DEFAULT = new Glyph(GlyphList.defaultSong,
+        STARTX, STARTY);
+    private static final Glyph DEFAULT1 = new Glyph(GlyphList.defaultSong1,
+        STARTX, STARTY);
+    private static final Glyph DEFAULT2 = new Glyph(GlyphList.defaultSong2,
+        STARTX, STARTY);
     private static GlyphList DEFAULT_GLYPHS;
 
 
@@ -60,14 +61,6 @@ public class GUIDisplayWindow {
     public GUIDisplayWindow(GlyphList glyphs) {
         page = 0;
         this.glyphs = glyphs;
-        if (page == glyphs.size() / 9) {
-            for (int i = page * 9; i < glyphs.size() % 9; i++) {
-                window.addShape(glyphs.get(i));
-            }
-        }
-        for (int i = 0; i < 9; i++) {
-            window.addShape(glyphs.get(i));
-        }
 
         window = new Window("Project 5");
         window.setSize(1200, 800);
@@ -96,6 +89,9 @@ public class GUIDisplayWindow {
         next = new Button("Next >");
         window.addButton(next, WindowSide.NORTH);
         next.onClick(this, "clickedNext");
+        if (glyphs.size() < 10) {
+            next.disable();
+        }
 
         hobby = new Button("Represent Hobby");
         window.addButton(hobby, WindowSide.SOUTH);
@@ -116,17 +112,55 @@ public class GUIDisplayWindow {
     }
 
 
-    private void updateGlyphs() {
+    private void addShapeList(DLList<Shape> list) {
+        for (int k = 0; k < list.size(); k++) {
+            window.addShape(list.get(k));
+        }
+    }
+
+
+    private void placeGlyphs() {
         if (page == glyphs.size() / 9) {
             for (int i = page * 9; i < glyphs.size() % 9; i++) {
-                glyphs.get(i).moveTo(STARTX + increment * (i % 3), STARTY
-                    + increment * (i / 3));
-                window.addShape(glyphs.get(i));
+                Glyph curr = glyphs.get(i);
+                for (int k = 0; k < curr.size(); k++) {
+                    curr.get(k).move(increment * (i % 3), increment * (i / 3));
+                    addShapeList(curr);
+                }
             }
         }
         else {
             for (int i = page * 9; i < 9; i++) {
-                window.addShape(glyphs.get(i));
+                Glyph curr = glyphs.get(i);
+                for (int k = 0; k < curr.size(); k++) {
+                    curr.get(k).moveTo(STARTX + increment * (i % 3), STARTY
+                        + increment * (i / 3));
+                    addShapeList(curr);
+                }
+            }
+        }
+    }
+
+
+    private void updateGlyphs() {
+        if (page == glyphs.size() / 9) {
+            for (int i = page * 9; i < glyphs.size() % 9; i++) {
+                Glyph curr = glyphs.get(i);
+                for (int k = 0; k < curr.size(); k++) {
+                    curr.get(k).moveTo(STARTX + increment * (i % 3), STARTY
+                        + increment * (i / 3));
+                    addShapeList(curr);
+                }
+            }
+        }
+        else {
+            for (int i = page * 9; i < 9; i++) {
+                Glyph curr = glyphs.get(i);
+                for (int k = 0; k < curr.size(); k++) {
+                    curr.get(k).moveTo(STARTX + increment * (i % 3), STARTY
+                        + increment * (i / 3));
+                    addShapeList(curr);
+                }
             }
         }
     }
@@ -135,70 +169,102 @@ public class GUIDisplayWindow {
     public void clickedPrev(Button button) {
         page--;
         updateGlyphs();
+        if (page == 0) {
+            prev.disable();
+        }
     }
 
 
     public void clickedNext(Button button) {
         page++;
         updateGlyphs();
+        prev.enable();
+        if (page == glyphs.size() / 9) {
+            next.disable();
+        }
     }
 
 
     public void clickedArtistName(Button button) {
         glyphs.sortArtist();
         page = 0;
-        updateGlyphs();
+        if (started) {
+            updateGlyphs();
+        }
+        glyphs.setSorts("A");
+
     }
 
 
     public void clickedSongTitle(Button button) {
         glyphs.sortTitle();
         page = 0;
-        updateGlyphs();
+        if (started) {
+            updateGlyphs();
+        }
+        glyphs.setSorts("A");
     }
 
 
     public void clickedReleaseYear(Button button) {
         glyphs.sortYear();
         page = 0;
-        updateGlyphs();
+        if (started) {
+            updateGlyphs();
+        }
+        glyphs.setSorts("Y");
     }
 
 
     public void clickedGenre(Button button) {
         glyphs.sortGenre();
         page = 0;
-        updateGlyphs();
+        if (started) {
+            updateGlyphs();
+        }
+        glyphs.setSorts("G");
     }
 
 
     public void clickedHobby(Button button) {
         window.removeAllShapes();
-        updateGlyphs();
-        key = new GUIKey(Category.Hobby);
-        for (int i = 0; i < key.size(); i++) {
-            window.addShape(key.get(i));
+        if (started) {
+            updateGlyphs();
         }
+        else {
+            placeGlyphs();
+        }
+        key = new GUIKey(Category.Hobby);
+        addShapeList(key);
+        started = true;
     }
 
 
     public void clickedMajor(Button button) {
         window.removeAllShapes();
-        updateGlyphs();
-        key = new GUIKey(Category.Major);
-        for (int i = 0; i < key.size(); i++) {
-            window.addShape(key.get(i));
+        if (started) {
+            updateGlyphs();
         }
+        else {
+            placeGlyphs();
+        }
+        key = new GUIKey(Category.Major);
+        addShapeList(key);
+        started = true;
     }
 
 
     public void clickedRegion(Button button) {
         window.removeAllShapes();
-        updateGlyphs();
-        key = new GUIKey(Category.Region);
-        for (int i = 0; i < key.size(); i++) {
-            window.addShape(key.get(i));
+        if (started) {
+            updateGlyphs();
         }
+        else {
+            placeGlyphs();
+        }
+        key = new GUIKey(Category.Region);
+        addShapeList(key);
+        started = true;
     }
 
 

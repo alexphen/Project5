@@ -18,25 +18,25 @@ public class GlyphListTest extends student.TestCase {
     public void setUp() {
         gl = new GlyphList();
         song1 = GlyphList.defaultSong;
-        song2 = new Song("Upside Down", "Diana Ross", 1980, "disco");
-        song3 = new Song("Uma Thurman", "Fall Out Boy", 2015, "rock");
+        song2 = GlyphList.defaultSong1;
+        song3 = GlyphList.defaultSong2;
     }
 
 
     public void testAdd() {
-        gl.add(new Glyph(1, 1, 1, song1));
+        gl.add(new Glyph(song1, 1, 1));
         assertEquals(gl.size(), 1);
-        gl.add(new Glyph(1, 1, 1, song2));
+        gl.add(new Glyph(song2, 1, 1));
         assertEquals(gl.size(), 2);
-        gl.add(new Glyph(1, 1, 1, song3));
+        gl.add(new Glyph(song3, 1, 1));
         assertEquals(gl.size(), 3);
     }
 
 
     public void testSortArtist() {
-        gl.add(new Glyph(1, 1, 1, song1));
-        gl.add(new Glyph(1, 1, 1, song2));
-        gl.add(new Glyph(1, 1, 1, song3));
+        gl.add(new Glyph(song1, 1, 1));
+        gl.add(new Glyph(song2, 1, 1));
+        gl.add(new Glyph(song3, 1, 1));
 
         gl.sortArtist();
         assertEquals(gl.get(0).getSong(), song2);
@@ -46,9 +46,9 @@ public class GlyphListTest extends student.TestCase {
 
 
     public void testSortGenre() {
-        gl.add(new Glyph(1, 1, 1, song1));
-        gl.add(new Glyph(1, 1, 1, song2));
-        gl.add(new Glyph(1, 1, 1, song3));
+        gl.add(new Glyph(song1, 1, 1));
+        gl.add(new Glyph(song2, 1, 1));
+        gl.add(new Glyph(song3, 1, 1));
 
         gl.sortGenre();
         assertEquals(gl.get(0).getSong(), song1);
@@ -58,9 +58,9 @@ public class GlyphListTest extends student.TestCase {
 
 
     public void testSortTitle() {
-        gl.add(new Glyph(1, 1, 1, song1));
-        gl.add(new Glyph(1, 1, 1, song2));
-        gl.add(new Glyph(1, 1, 1, song3));
+        gl.add(new Glyph(song1, 1, 1));
+        gl.add(new Glyph(song2, 1, 1));
+        gl.add(new Glyph(song3, 1, 1));
 
         gl.sortTitle();
         assertEquals(gl.get(0).getSong(), song1);
@@ -70,9 +70,9 @@ public class GlyphListTest extends student.TestCase {
 
 
     public void testSortYear() {
-        gl.add(new Glyph(1, 1, 1, song1));
-        gl.add(new Glyph(1, 1, 1, song2));
-        gl.add(new Glyph(1, 1, 1, song3));
+        gl.add(new Glyph(song1, 1, 1));
+        gl.add(new Glyph(song2, 1, 1));
+        gl.add(new Glyph(song3, 1, 1));
 
         gl.sortYear();
         assertEquals(gl.get(0).getSong(), song3);
@@ -82,9 +82,9 @@ public class GlyphListTest extends student.TestCase {
 
 
     public void testToArray() {
-        Glyph g1 = new Glyph(1, 1, 1, song1);
-        Glyph g2 = new Glyph(1, 1, 1, song2);
-        Glyph g3 = new Glyph(1, 1, 1, song3);
+        Glyph g1 = new Glyph(song1, 1, 1);
+        Glyph g2 = new Glyph(song2, 1, 1);
+        Glyph g3 = new Glyph(song3, 1, 1);
 
         gl.add(g1);
         gl.add(g2);
@@ -99,9 +99,9 @@ public class GlyphListTest extends student.TestCase {
 
 
     public void testToString() {
-        gl.add(new Glyph(1, 1, 1, song1));
-        gl.add(new Glyph(1, 1, 1, song2));
-        gl.add(new Glyph(1, 1, 1, song3));
+        gl.add(new Glyph(song1, 1, 1));
+        gl.add(new Glyph(song2, 1, 1));
+        gl.add(new Glyph(song3, 1, 1));
 
         assertEquals(gl.toString(),
             "[All These Things I've Done Glyph, Upside Down Glyph, Uma Thurman Glyph]");

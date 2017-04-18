@@ -18,8 +18,8 @@ public class SongListTest extends student.TestCase {
     public void setUp() {
         sl = new SongList();
         song1 = GlyphList.defaultSong;
-        song2 = new Song("Upside Down", "Diana Ross", 1980, "disco");
-        song3 = new Song("Uma Thurman", "Fall Out Boy", 2015, "rock");
+        song2 = new Song("Upside Down", "Diana Ross", 1980, "Disco");
+        song3 = new Song("Uma Thurman", "Fall Out Boy", 2015, "Rock");
     }
 
 
@@ -39,7 +39,7 @@ public class SongListTest extends student.TestCase {
         sl.add(song3);
 
         assertEquals(sl.toString(),
-            "[All These Things I've Done, Upside Down, Uma Thurman]");
+            "[All These Things I've Done, The Killers, 2005, Alternative; Upside Down, Diana Ross, 1980, Disco; Uma Thurman, Fall Out Boy, 2015, Rock]");
     }
 
 
