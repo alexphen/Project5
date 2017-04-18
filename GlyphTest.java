@@ -1,6 +1,7 @@
 package itemclasses;
 
 import java.util.NoSuchElementException;
+import CS2114.Shape;
 
 /**
  * 
@@ -133,21 +134,21 @@ public class GlyphTest extends student.TestCase {
         song.getState()[5] = 7;
         song.getState()[6] = 97;
         song.getState()[7] = 54;
-        
+
         int[] hobby = song.getHobbies();
         int[] major = song.getMajor();
         int[] state = song.getState();
 
         // Ensures the correct array is accessed based on which boolean is true
-        glyph.update(1);        
+        glyph.update(1);
         assertTrue(glyph.getListenLike().equals(hobby));
-        
+
         glyph.update(2);
         assertTrue(glyph.getListenLike().equals(major));
-        
+
         glyph.update(3);
         assertTrue(glyph.getListenLike().equals(state));
-        
+
         try {
             glyph.update(4);
         }
@@ -155,13 +156,93 @@ public class GlyphTest extends student.TestCase {
             assertEquals(NoSuchElementException.class, e.getClass());
         }
         assertNull(glyph.getListenLike());
-        
-        
+
     }
+
 
     /**
      * Tests update, which changes the booleans, array of listen and like values
      * and updates the bar sizes
      */
+    public void testUpdateBars1() {
+        // Adds fake values to the arrays of the song
+        song.getHobbies()[0] = 100;
+        song.getHobbies()[1] = 83;
+        song.getHobbies()[2] = 38;
+        song.getHobbies()[3] = 23;
+        song.getHobbies()[4] = 92;
+        song.getHobbies()[5] = 23;
+        song.getHobbies()[6] = 45;
+        song.getHobbies()[7] = 34;
+        glyph.update(1);
+        DLList<Shape> list = glyph.getGlyphShapes();
+
+        assertEquals(100, list.get(2).getWidth());
+        assertEquals(83, list.get(3).getWidth());
+        assertEquals(38, list.get(4).getWidth());
+        assertEquals(23, list.get(5).getWidth());
+        assertEquals(92, list.get(6).getWidth());
+        assertEquals(23, list.get(7).getWidth());
+        assertEquals(45, list.get(8).getWidth());
+        assertEquals(34, list.get(9).getWidth());
+
+    }
+
+
+    /**
+     * Tests update, which changes the booleans, array of listen and like values
+     * and updates the bar sizes
+     */
+    public void testUpdateBars2() {
+        song.getMajor()[0] = 55;
+        song.getMajor()[1] = 21;
+        song.getMajor()[2] = 70;
+        song.getMajor()[3] = 52;
+        song.getMajor()[4] = 91;
+        song.getMajor()[5] = 32;
+        song.getMajor()[6] = 70;
+        song.getMajor()[7] = 21;
+        
+        glyph.update(2);
+        DLList<Shape> list = glyph.getGlyphShapes();
+
+        assertEquals(55, list.get(2).getWidth());
+        assertEquals(21, list.get(3).getWidth());
+        assertEquals(70, list.get(4).getWidth());
+        assertEquals(52, list.get(5).getWidth());
+        assertEquals(91, list.get(6).getWidth());
+        assertEquals(32, list.get(7).getWidth());
+        assertEquals(70, list.get(8).getWidth());
+        assertEquals(21, list.get(9).getWidth());
+    }
+
+
+    /**
+     * Tests update, which changes the booleans, array of listen and like values
+     * and updates the bar sizes
+     */
+    public void testUpdateBars3() {
+        song.getState()[0] = 68;
+        song.getState()[1] = 12;
+        song.getState()[2] = 32;
+        song.getState()[3] = 12;
+        song.getState()[4] = 65;
+        song.getState()[5] = 7;
+        song.getState()[6] = 97;
+        song.getState()[7] = 54;
+        
+        
+        glyph.update(3);
+        DLList<Shape> list = glyph.getGlyphShapes();
+
+        assertEquals(68, list.get(2).getWidth());
+        assertEquals(12, list.get(3).getWidth());
+        assertEquals(32, list.get(4).getWidth());
+        assertEquals(12, list.get(5).getWidth());
+        assertEquals(65, list.get(6).getWidth());
+        assertEquals(7, list.get(7).getWidth());
+        assertEquals(97, list.get(8).getWidth());
+        assertEquals(54, list.get(9).getWidth());
+    }
 
 }
