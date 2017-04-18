@@ -12,14 +12,14 @@ public class Bar extends Shape {
     /**
      * The width of every bar will be the same
      */
-    private static final int BAR_WIDTH = 10;
+    private static final int BAR_HEIGHT = 10;
 
 
     /**
      * Bar constructor
      * @param length length of this bar
      */
-    public Bar(int length) {
-        super(0, 0, length, BAR_WIDTH);
+    public Bar(int width {
+        super(0, 0, width, BAR_HEIGHT);
     }
 }
