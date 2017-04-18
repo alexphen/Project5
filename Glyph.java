@@ -182,7 +182,7 @@ public class Glyph extends DLList<Shape>{
      * @return DLList<Shape> the glyphList of shapes
      */
     public DLList<Shape> getGlyphShapes() {
-        return glyphShapes;
+        return glyph;
     }
 
     
