@@ -138,6 +138,54 @@ public class Glyph extends DLList<Shape>{
         return song.getSongTitle() + " Glyph";
     }
     
+    
+    /**
+     * Get hobby, for testing purposes
+     * 
+     * @return boolean the value of hobby
+     */
+    public boolean getHobby() {
+        return hobby;
+    }
+
+
+    /**
+     * Get major, for testing purposes
+     * 
+     * @return boolean the value of major
+     */
+    public boolean getMajor() {
+        return major;
+    }
+
+
+    /**
+     * Get state, for testing purposes
+     * 
+     * @return boolean the value of state
+     */
+    public boolean getState() {
+        return state;
+    }
+    
+    /**
+     * Gets the listenLike array, for testing purposes
+     * 
+     * @return int[] the ListenLike array
+     */
+    public int[] getListenLike() {
+        return listenLike;
+    }
+    
+    /**
+     * Gets the listOfShapes, for testing purposes
+     * @return DLList<Shape> the glyphList of shapes
+     */
+    public DLList<Shape> getGlyphShapes() {
+        return glyphShapes;
+    }
+
+    
     /**
      * Updates the array of listenLike
      * Updates the booleans
@@ -194,8 +242,11 @@ public class Glyph extends DLList<Shape>{
         else if (major) {
             listenLike = song.getMajor();
         }
-        else {
+        else if (state) {
             listenLike = song.getState();
+        }
+        else {
+            listenLike = null;
         }
     }
     
@@ -204,6 +255,7 @@ public class Glyph extends DLList<Shape>{
      * possibly need to change the bars in 
      */
     private void updateBars() {
+      if (listenLike != null) {
         listen1 = new Bar(listenLike[0]);
         like1 = new Bar((listenLike[1]/listenLike[0]) * 100);
         listen2 = new Bar(listenLike[2]);
@@ -222,5 +274,9 @@ public class Glyph extends DLList<Shape>{
         glyph.add(like3);
         glyph.add(listen4);
         glyph.add(like4);
+      }
+      else {
+         throw new NoSuchElementException();
+      }
     }
 }
