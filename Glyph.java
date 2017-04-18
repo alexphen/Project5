@@ -257,13 +257,13 @@ public class Glyph extends DLList<Shape>{
     private void updateBars() {
       if (listenLike != null) {
         listen1 = new Bar(listenLike[0]);
-        like1 = new Bar((listenLike[1]/listenLike[0]) * 100);
+        like1 = new Bar(listenLike[1]);
         listen2 = new Bar(listenLike[2]);
-        like2 = new Bar((listenLike[3]/listenLike[2]) * 100);
+        like2 = new Bar(listenLike[3]);
         listen3 = new Bar(listenLike[4]);
-        like3 = new Bar((listenLike[5]/listenLike[4]) * 100);
+        like3 = new Bar(listenLike[5]);
         listen4 = new Bar(listenLike[6]);
-        like4 = new Bar((listenLike[7]/listenLike[6]) * 100);    
+        like4 = new Bar(listenLike[7]);    
         
         
         glyph.add(listen1);
