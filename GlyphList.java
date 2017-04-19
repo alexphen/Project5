@@ -75,7 +75,7 @@ public class GlyphList extends DLList<Glyph> {
                 Glyph curr = this.get(k);
                 Glyph before = this.get(k - 1);
                 if (curr.getSong().getSongTitle().compareTo(before.getSong()
-                    .getSongTitle()) < 0) {
+                    .getSongTitle()) > 0) {
                     swapWithBefore(k);
                 }
             }
