@@ -11,36 +11,31 @@ public class PersonFileReader {
      */
     private Scanner scan;
     
-    /**
-     * File with song information inside
-     */
-    //private File file;
     
     /**
      * Song list 
      */
-    PersonList<Person> personList;
+    PersonList personList;
     
     /**
      * The constructor for SongFileReader
      * @param the file that is going to be read into the scanner
      */
     public PersonFileReader(File file) {
-        //this.file = file;
         try {
             scan = new Scanner(file);
         }
         catch (FileNotFoundException e) {
             e.getStackTrace();
         }
-        personList = new PersonList<>();
+        personList = new PersonList();
         
     }
     
     /**
      * Reads the song file, creates songs, then adds the song to a list of songs
      */
-    public PersonList<Song> readSongFile() {
+    public PersonList readSongFile() {
         while(scan.hasNextLine()) {          
             Person person = new Person(scan.nextLine());
             personList.add(person);
