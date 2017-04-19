@@ -7,14 +7,22 @@ package musicpreference;
  * @version <4/12/17>
  */
 public class SongList extends DLList<Song> {
+   /**
+    * Constructor for SongList
+    */
     public SongList() {
         super();
     }
-    
+    /**
+     * Iterator for SongList
+     */
     public SongListIterator iterator() {
         return new SongListIterator();
     }
     
+    /**
+     * Prints a string of the the contents of the songList
+     */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("[");
@@ -32,17 +40,28 @@ public class SongList extends DLList<Song> {
         return builder.toString();
     }
     
-    
+    /**
+     * 
+     * @author Adam Tapp adamt
+     * @version 04/19/2017
+     */
     private class SongListIterator extends DLListIterator<Song> {
-
+        /**
+         * SongListIterator constructor
+         */
         public SongListIterator() {
             super();
         }
-        
+        /**
+         * Determines if the list has another entry
+         */
         public boolean hasNext() {
             return super.hasNext();
         }
-        
+        /**
+         * Returns the next song in the list
+         * @return Song the next song in the list
+         */
         public Song next() {
             return super.next();
         }
