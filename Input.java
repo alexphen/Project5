@@ -43,8 +43,6 @@ public class Input {
      * Input constructor
      */
     public Input(File file, File file1) {
-        //personFile = new File('');
-        //songFile = new File('SongList');
         sFR = new SongFileReader(file);
         pFR = new PersonFileReader(file1);
         window = new GUIDisplayWindow();
