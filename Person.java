@@ -72,7 +72,7 @@ public class Person {
      * 
      * @return Hobby the hobby of this person
      */
-    public Hobby getHobby() {
+    public HobbyEnum getHobby() {
         return hobby;
     }
 
@@ -82,7 +82,7 @@ public class Person {
      * 
      * @return State the state of this person
      */
-    public State getState() {
+    public StateEnum getState() {
         return state;
     }
 
@@ -92,7 +92,7 @@ public class Person {
      * 
      * @return Major the major of this person
      */
-    public Major getMajor() {
+    public MajorEnum getMajor() {
         return major;
     }
 
