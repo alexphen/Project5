@@ -12,17 +12,17 @@ public class Person {
     /**
      * The hobby of this person
      */
-    private Hobby hobby;
+    private HobbyEnum hobby;
 
     /**
      * The state this person lives in
      */
-    private State state;
+    private StateEnum state;
 
     /**
      * The major of this person
      */
-    private Major major;
+    private MajorEnum major;
 
     /**
      * Determines if this person is a valid person
