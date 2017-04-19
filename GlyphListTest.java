@@ -13,6 +13,9 @@ public class GlyphListTest extends student.TestCase {
     private Song song1;
     private Song song2;
     private Song song3;
+    private Glyph g1;
+    private Glyph g2;
+    private Glyph g3;
 
 
     public void setUp() {
@@ -20,6 +23,9 @@ public class GlyphListTest extends student.TestCase {
         song1 = GlyphList.defaultSong;
         song2 = GlyphList.defaultSong1;
         song3 = GlyphList.defaultSong2;
+        g1 = new Glyph(song1, 0, 0);
+        g2 = new Glyph(song2, 0, 0);
+        g3 = new Glyph(song3, 0, 0);
     }
 
 
@@ -34,9 +40,9 @@ public class GlyphListTest extends student.TestCase {
 
 
     public void testSortArtist() {
-        gl.add(new Glyph(song1, 1, 1));
-        gl.add(new Glyph(song2, 1, 1));
-        gl.add(new Glyph(song3, 1, 1));
+        gl.add(g1);
+        gl.add(g2);
+        gl.add(g3);
 
         gl.sortArtist();
         assertEquals(gl.get(0).getSong(), song2);

@@ -14,6 +14,7 @@ public class GlyphList extends DLList<Glyph> {
         1980, "disco");
     public static Song defaultSong2 = new Song("Uma Thurman", "Fall Out Boy",
         2015, "rock");
+    private static final int START = 50;
 
 
     public GlyphList() {
@@ -34,9 +35,18 @@ public class GlyphList extends DLList<Glyph> {
 
     public static GlyphList defaultGlyphList() {
         GlyphList dGL = new GlyphList();
-        dGL.add(new Glyph(defaultSong, 100, 100));
-        dGL.add(new Glyph(defaultSong1, 100, 100));
-        dGL.add(new Glyph(defaultSong2, 100, 100));
+        defaultSong.setDefaultArr();
+        defaultSong1.setDefaultArr();
+        defaultSong2.setDefaultArr();
+        dGL.add(new Glyph(defaultSong, START, START));
+        dGL.add(new Glyph(defaultSong1, START, START));
+        dGL.add(new Glyph(defaultSong2, START, START));
+        dGL.add(new Glyph(defaultSong, START, START));
+        dGL.add(new Glyph(defaultSong1, START, START));
+        dGL.add(new Glyph(defaultSong2, START, START));
+        dGL.add(new Glyph(defaultSong2, START, START));
+        dGL.add(new Glyph(defaultSong2, START, START));
+        dGL.add(new Glyph(defaultSong2, START, START));
         return dGL;
     }
 
@@ -45,6 +55,7 @@ public class GlyphList extends DLList<Glyph> {
         for (int i = 1; i < this.size(); i++) {
             for (int k = i; k > 0; k--) {
                 Glyph curr = this.get(k);
+                curr.setSort("A");
                 Glyph before = this.get(k - 1);
                 if (curr.getSong().getArtistName().compareTo(before.getSong()
                     .getArtistName()) < 0) {
@@ -59,6 +70,7 @@ public class GlyphList extends DLList<Glyph> {
         for (int i = 1; i < this.size(); i++) {
             for (int k = i; k > 0; k--) {
                 Glyph curr = this.get(k);
+                curr.setSort("G");
                 Glyph before = this.get(k - 1);
                 if (curr.getSong().getGenre().compareTo(before.getSong()
                     .getGenre()) < 0) {
@@ -73,6 +85,7 @@ public class GlyphList extends DLList<Glyph> {
         for (int i = 1; i < this.size(); i++) {
             for (int k = i; k > 0; k--) {
                 Glyph curr = this.get(k);
+                curr.setSort("A");
                 Glyph before = this.get(k - 1);
                 if (curr.getSong().getSongTitle().compareTo(before.getSong()
                     .getSongTitle()) < 0) {
@@ -87,6 +100,7 @@ public class GlyphList extends DLList<Glyph> {
         for (int i = 1; i < this.size(); i++) {
             for (int k = i; k > 0; k--) {
                 Glyph curr = this.get(k);
+                curr.setSort("Y");
                 Glyph before = this.get(k - 1);
                 if (curr.getSong().getYearReleased() > before.getSong()
                     .getYearReleased()) {
