@@ -17,14 +17,9 @@ public class SongFileReader {
     private Scanner scan;
     
     /**
-     * File with song information inside
-     */
-    //private File file;
-    
-    /**
      * Song list 
      */
-    SongList<Song> songList;
+    SongList songList;
     
     /**
      * The constructor for SongFileReader
@@ -38,14 +33,14 @@ public class SongFileReader {
         catch (FileNotFoundException e) {
             e.getStackTrace();
         }
-        songList = new SongList<>();
+        songList = new SongList();
         
     }
     
     /**
      * Reads the song file, creates songs, then adds the song to a list of songs
      */
-    public SongList<Song> readSongFile() {
+    public SongList readSongFile() {
         while(scan.hasNext()) {
             String songTitle = scan.next();
             String artistName = scan.next();
