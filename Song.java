@@ -78,9 +78,9 @@ public class Song {
         this.yearReleased = yearReleased;
         this.genre = genre;
         
-        hobbies = new int[6];
-        major = new int[6];
-        state = new int[6];
+        hobbies = new int[8];
+        major = new int[8];
+        state = new int[8];
     }
 
 
