@@ -1,6 +1,6 @@
 package itemclasses;
 
-public enum Hobby {
+public enum HobbyEnum {
 
     /**
      * Enums that decide the state of a person's hobby
