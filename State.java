@@ -1,6 +1,6 @@
 package itemclasses;
 
-public enum State {
+public enum StateEnum {
     /**
      * Where a person can live
      */
