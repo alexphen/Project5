@@ -29,9 +29,9 @@ public class SongTest extends student.TestCase {
         assertEquals("Don't Stop Believing", song.getSongTitle());
         assertEquals(1925, song.getYearReleased());
         assertEquals("HipHop", song.getGenre());
-        assertEquals(6, song.getState().length);
-        assertEquals(6, song.getHobbies().length);
-        assertEquals(6, song.getMajor().length);
+        assertEquals(8, song.getState().length);
+        assertEquals(8, song.getHobbies().length);
+        assertEquals(8, song.getMajor().length);
         assertEquals("Don't Stop Believing, Billy Joel, 1925, HipHop", song
             .toString());
     }
