@@ -33,12 +33,12 @@ public class Input {
     /**
      * File for people
      */
-    private File personFile;
+    //private File personFile;
 
     /**
      * File for songs
      */
-    private File songFile;
+    //private File songFile;
 
     /**
      * Song Reader
@@ -49,24 +49,19 @@ public class Input {
      * Person Reader
      */
     private PersonFileReader pFR;
-
-
-    /**
-     * Keeps track of what
-     */
     /**
      * Input constructor
      */
-    public Input() {
-        // Files can change
-        // personFile = new File('MusicSurveyData');
-        // songFile = new File('SongList');
-        sFR = new SongFileReader(songFile);
-        pFR = new PersonFileReader(personFile);
+    public Input(File file, File file1) {
+        //personFile = new File('');
+        //songFile = new File('SongList');
+        sFR = new SongFileReader(file);
+        pFR = new PersonFileReader(file1);
         window = new GUIDisplayWindow();
         songList = readSongs();
         personList = readPeople();
         glyphList = new GlyphList();
+        addSongValues();
 
     }
 
@@ -165,9 +160,13 @@ public class Input {
                         song.getState()[6] = aInts.get(listenVal);
                         song.getState()[7] = aInts.get(likeVal);
                         break;
-                }
-            }
-        }
+                }//End Switch 3
+                
+            }//End person for
+            Glyph glyph = new Glyph(song, 0, 0);
+            glyphList.add(glyph);
+        }//End song for
+        
     }
 
     /**
@@ -183,5 +182,11 @@ public class Input {
      * }
      * }
      */
+    
+    public static void main(String args0[]) {
+        File songFile = new File(args0[0]);
+        File personFile = new File(args0[1]);
+        Input input  = new Input(songFile, personFile);
+    }
 
 }
