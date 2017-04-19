@@ -31,16 +31,6 @@ public class Input {
     private GlyphList glyphList;
 
     /**
-     * File for people
-     */
-    //private File personFile;
-
-    /**
-     * File for songs
-     */
-    //private File songFile;
-
-    /**
      * Song Reader
      */
     private SongFileReader sFR;
