@@ -17,7 +17,7 @@ public class Bar extends Shape {
 
     /**
      * Bar constructor
-     * @param length length of this bar
+     * @param width width of this bar
      */
     public Bar(int width) {
         super(0, 0, width, BAR_HEIGHT);
