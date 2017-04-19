@@ -1,6 +1,6 @@
 package itemclasses;
 
-public enum Major {
+public enum MajorEnum {
     /**
      * The major of a person
      */
