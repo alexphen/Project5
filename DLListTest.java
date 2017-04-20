@@ -8,9 +8,6 @@ import java.util.NoSuchElementException;
 import student.TestCase;
 
 /**
- * @author Eric
- * @author maellis1
- * @version 11-2-15
  * @author aphen
  * @version <3/31/17>
  *
@@ -21,7 +18,6 @@ public class DLListTest extends TestCase {
      */
     private DLList<String> list;
     private Iterator<String> iter;
-    private Iterator<String> rIter;
 
     /**
      * run before every test case
@@ -101,36 +97,7 @@ public class DLListTest extends TestCase {
         
     }
     
-    /**
-     * Tests remove with a reverse iterator
-     */
-    public void testRemoveRIter() {
-        Exception e = null;
-        try {
-            rIter.remove();
-        }
-        catch (Exception ill) {
-            e = ill;
-        }
-        assertNotNull(e);
-        assertTrue(e instanceof IllegalStateException);
-        list.add("A");
-        list.add("B");
-        assertTrue(rIter.hasNext());
-        rIter.next();
-        rIter.remove();
-
-        e = null;
-        try {
-            iter.remove();
-        }
-        catch (Exception ill) {
-            e = ill;
-        }
-        assertNotNull(e);
-        assertTrue(e instanceof IllegalStateException);
-        
-    }
+ 
     
     /**
      * Tests the use of an iterator at the end of the list
@@ -155,28 +122,6 @@ public class DLListTest extends TestCase {
         assertTrue(e instanceof NoSuchElementException);
     }
     
-    /**
-     * Tests the use of an reverseIterator at the end of the list
-     */
-    public void testRIterEnd() {
-        list.add("A");
-        list.add("B");
-        assertTrue(rIter.hasNext());
-        rIter.next();
-        assertTrue(rIter.hasNext());
-        assertEquals(rIter.next(), "A");
-        assertFalse(rIter.hasNext());
-        
-        Exception e = null;
-        try {
-            rIter.next();
-        }
-        catch (Exception no) {
-            e = no;
-        }
-        assertNotNull(e);
-        assertTrue(e instanceof NoSuchElementException);
-    }
 
     /**
      * Tests the add method. Ensures that it adds the object is added at the end
@@ -266,7 +211,6 @@ public class DLListTest extends TestCase {
      * remove the first and last elements
      */
     public void testRemoveObj() {
-        assertFalse(list.remove((Integer)null));
         list.add("A");
         list.add("B");
         assertTrue(list.remove("A"));
@@ -325,13 +269,13 @@ public class DLListTest extends TestCase {
      * Tests the toString when there are 0, 1, and 2 objects in the list
      */
     public void testToString() {
-        assertEquals("{}",
+        assertEquals("[]",
                 list.toString());
         list.add("A");
-        assertEquals("{A}",
+        assertEquals("[A]",
                 list.toString());
         list.add("B");
-        assertEquals("{A, B}",
+        assertEquals("[A, B]",
                 list.toString());
     }
 
