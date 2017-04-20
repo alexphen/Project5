@@ -9,12 +9,18 @@ package musicpreference;
  */
 public class GlyphListTest extends student.TestCase {
 
+    /**
+     * Fields
+     */
     private GlyphList gl;
     private Song song1;
     private Song song2;
     private Song song3;
 
 
+    /**
+     * Initializes fields
+     */
     public void setUp() {
         gl = new GlyphList();
         song1 = GlyphList.defaultSong;
@@ -23,6 +29,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests add method
+     */
     public void testAdd() {
         gl.add(new Glyph(song1, 1, 1));
         assertEquals(gl.size(), 1);
@@ -33,6 +42,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests sortArtist method
+     */
     public void testSortArtist() {
         gl.add(new Glyph(song1, 1, 1));
         gl.add(new Glyph(song2, 1, 1));
@@ -45,6 +57,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests sortGenre method
+     */
     public void testSortGenre() {
         gl.add(new Glyph(song1, 1, 1));
         gl.add(new Glyph(song2, 1, 1));
@@ -57,6 +72,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests sortTitle method
+     */
     public void testSortTitle() {
         gl.add(new Glyph(song1, 1, 1));
         gl.add(new Glyph(song2, 1, 1));
@@ -69,6 +87,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests sort year method
+     */
     public void testSortYear() {
         gl.add(new Glyph(song1, 1, 1));
         gl.add(new Glyph(song2, 1, 1));
@@ -81,6 +102,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests toArray method
+     */
     public void testToArray() {
         Glyph g1 = new Glyph(song1, 1, 1);
         Glyph g2 = new Glyph(song2, 1, 1);
@@ -98,6 +122,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests toString method
+     */
     public void testToString() {
         gl.add(new Glyph(song1, 1, 1));
         gl.add(new Glyph(song2, 1, 1));

@@ -2,32 +2,37 @@
  * 
  */
 package musicpreference;
+
 /**
  * @author aphen
  * @version <4/12/17>
  */
 public class SongList extends DLList<Song> {
-   /**
-    * Constructor for SongList
-    */
+
+    /**
+     * Constructor, calls DLList constructor
+     */
     public SongList() {
         super();
     }
+
+
     /**
-     * Iterator for SongList
+     * @return SongListIterator
      */
     public SongListIterator iterator() {
         return new SongListIterator();
     }
-    
+
+
     /**
-     * Prints a string of the the contents of the songList
+     * @return String representation of list
      */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("[");
         if (!isEmpty()) {
-            
+
             for (int i = 0; i < this.size(); i++) {
                 builder.append(this.get(i).toString());
                 if (i != size() - 1) {
@@ -35,32 +40,33 @@ public class SongList extends DLList<Song> {
                 }
             }
         }
-
         builder.append("]");
         return builder.toString();
     }
-    
+
     /**
-     * 
-     * @author Adam Tapp adamt
-     * @version 04/19/2017
+     * Song list iterator inner class
+     * @author aphen
+     * @version <4/17/17
      */
     private class SongListIterator extends DLListIterator<Song> {
+
         /**
-         * SongListIterator constructor
+         * Constructor
          */
         public SongListIterator() {
             super();
         }
+
         /**
-         * Determines if the list has another entry
+         * @return True if there exists a next value
          */
         public boolean hasNext() {
             return super.hasNext();
         }
+
         /**
-         * Returns the next song in the list
-         * @return Song the next song in the list
+         * @return the next song in the list
          */
         public Song next() {
             return super.next();

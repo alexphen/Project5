@@ -1,52 +1,58 @@
 package musicpreference;
 
-
 /**
  * 
  * @author aphen
  * @version <4/12/17>
+ * @param <E>
  */
 public class PersonList extends DLList<Person> {
+
     /**
-     * PersonList constructor
+     * Constructor, calls DLLidt Constructor
      */
     public PersonList() {
         super();
     }
+
+
     /**
-     * Returns a new iterator for this personList
-     * @return PersonListIterator the iterator for this PersonList
+     * @return PersonListIterator
      */
     public PersonListIterator iterator() {
         return new PersonListIterator();
     }
+
+
     /**
+     * PersonListIterator inner class
      * 
-     * @author Adam Tapp adamt
-     * @version 04/19/2017
+     * @author aphen
+     * @version <4/17/17>
      */
     private class PersonListIterator extends DLListIterator<Person> {
+
         /**
-         * Constructor for PersonListIterator
+         * Iterator constructor
          */
         public PersonListIterator() {
             super();
         }
+
+
         /**
-         * Determines if the list has another entry
-         * @return boolean {@code true} if there is another entry in the list {@code false} otherwise
+         * @return true if there is a next value
          */
         public boolean hasNext() {
             return super.hasNext();
         }
-        
+
+
         /**
-         * Returns the next Person in the list
-         * @return Person the next Person in the list
+         * @return the next Person in the list
          */
         public Person next() {
             return super.next();
         }
     }
 }
-

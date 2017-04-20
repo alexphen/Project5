@@ -3,8 +3,6 @@
  */
 package musicpreference;
 
-import CS2114.TextShape;
-import java.awt.Color;
 import CS2114.Window;
 import CS2114.Button;
 import CS2114.Shape;
@@ -16,6 +14,9 @@ import CS2114.WindowSide;
  */
 public class GUIDisplayWindow {
 
+    /**
+     * Fields
+     */
     private Window window;
     private Button next;
     private Button prev;
@@ -31,33 +32,28 @@ public class GUIDisplayWindow {
     private GlyphList glyphs;
     private int page;
     private boolean started = false;
+    private int rep;
 
     private static int STARTX = 50;
     private static int STARTY = 50;
-    private static int increment = 350;
-    private static final Glyph DEFAULT = new Glyph(GlyphList.defaultSong,
-        STARTX, STARTY);
-    private static final Glyph DEFAULT1 = new Glyph(GlyphList.defaultSong1,
-        STARTX, STARTY);
-    private static final Glyph DEFAULT2 = new Glyph(GlyphList.defaultSong2,
-        STARTX, STARTY);
-    private static GlyphList DEFAULT_GLYPHS;
+    private static int xIncrement = 350;
+    private static int yIncrement = 200;
 
 
+    /**
+     * Default constructor using default GlyphList
+     */
     public GUIDisplayWindow() {
         this(GlyphList.defaultGlyphList());
     }
 
 
-    private static GlyphList setDefaultGlyphs() {
-        DEFAULT_GLYPHS = new GlyphList();
-        DEFAULT_GLYPHS.add(DEFAULT);
-        DEFAULT_GLYPHS.add(DEFAULT1);
-        DEFAULT_GLYPHS.add(DEFAULT2);
-        return DEFAULT_GLYPHS;
-    }
-
-
+    /**
+     * Constructor
+     * 
+     * @param glyphs
+     *            GlyphList to be represented
+     */
     public GUIDisplayWindow(GlyphList glyphs) {
         page = 0;
         this.glyphs = glyphs;
@@ -112,6 +108,12 @@ public class GUIDisplayWindow {
     }
 
 
+    /**
+     * Adds a list of shapes to the window
+     * 
+     * @param list
+     *            list of shapes to be added
+     */
     private void addShapeList(DLList<Shape> list) {
         for (int k = 0; k < list.size(); k++) {
             window.addShape(list.get(k));
@@ -119,12 +121,16 @@ public class GUIDisplayWindow {
     }
 
 
+    /**
+     * Places initial Glyphs on window
+     */
     private void placeGlyphs() {
         if (page == glyphs.size() / 9) {
             for (int i = page * 9; i < glyphs.size() % 9; i++) {
                 Glyph curr = glyphs.get(i);
                 for (int k = 0; k < curr.size(); k++) {
-                    curr.get(k).move(increment * (i % 3), increment * (i / 3));
+                    curr.get(k).move(xIncrement * (i % 3), yIncrement * (i
+                        / 3));
                     addShapeList(curr);
                 }
             }
@@ -133,8 +139,8 @@ public class GUIDisplayWindow {
             for (int i = page * 9; i < 9; i++) {
                 Glyph curr = glyphs.get(i);
                 for (int k = 0; k < curr.size(); k++) {
-                    curr.get(k).moveTo(STARTX + increment * (i % 3), STARTY
-                        + increment * (i / 3));
+                    curr.get(k).move(xIncrement * (i % 3), yIncrement * (i
+                        / 3));
                     addShapeList(curr);
                 }
             }
@@ -142,42 +148,58 @@ public class GUIDisplayWindow {
     }
 
 
-    private void updateGlyphs() {
+    /**
+     * Updates Glyphs on the window
+     * 
+     * @param rep
+     *            representation used
+     */
+    private void updateGlyphs(int rep) {
         if (page == glyphs.size() / 9) {
             for (int i = page * 9; i < glyphs.size() % 9; i++) {
                 Glyph curr = glyphs.get(i);
-                for (int k = 0; k < curr.size(); k++) {
-                    curr.get(k).moveTo(STARTX + increment * (i % 3), STARTY
-                        + increment * (i / 3));
-                    addShapeList(curr);
-                }
+                curr.update(rep);
+                curr.setStart(STARTX + xIncrement * (i % 3), STARTY + yIncrement
+                    * (i / 3));
+                addShapeList(curr);
             }
         }
         else {
             for (int i = page * 9; i < 9; i++) {
                 Glyph curr = glyphs.get(i);
-                for (int k = 0; k < curr.size(); k++) {
-                    curr.get(k).moveTo(STARTX + increment * (i % 3), STARTY
-                        + increment * (i / 3));
-                    addShapeList(curr);
-                }
+                curr.getBorder().moveTo(STARTX + xIncrement * (i % 3), STARTY
+                    + yIncrement * (i / 3));
+                curr.update(rep);
+                addShapeList(curr);
             }
         }
     }
 
 
+    /**
+     * Moves to previous page
+     * 
+     * @param button
+     *            previous button
+     */
     public void clickedPrev(Button button) {
         page--;
-        updateGlyphs();
+        updateGlyphs(rep);
         if (page == 0) {
             prev.disable();
         }
     }
 
 
+    /**
+     * Moves to next page
+     * 
+     * @param button
+     *            next button
+     */
     public void clickedNext(Button button) {
         page++;
-        updateGlyphs();
+        updateGlyphs(rep);
         prev.enable();
         if (page == glyphs.size() / 9) {
             next.disable();
@@ -185,51 +207,82 @@ public class GUIDisplayWindow {
     }
 
 
+    /**
+     * Sorts by Artist
+     * 
+     * @param button
+     *            sortArtist button
+     */
     public void clickedArtistName(Button button) {
         glyphs.sortArtist();
         page = 0;
-        if (started) {
-            updateGlyphs();
-        }
         glyphs.setSorts("A");
+        if (started) {
+            updateGlyphs(rep);
+        }
 
     }
 
 
+    /**
+     * Sorts by Title
+     * 
+     * @param button
+     *            sortTitle button
+     */
     public void clickedSongTitle(Button button) {
         glyphs.sortTitle();
         page = 0;
-        if (started) {
-            updateGlyphs();
-        }
         glyphs.setSorts("A");
+        if (started) {
+            updateGlyphs(rep);
+        }
     }
 
 
+    /**
+     * Sorts by Year
+     * 
+     * @param button
+     *            sortYear button
+     */
     public void clickedReleaseYear(Button button) {
         glyphs.sortYear();
         page = 0;
-        if (started) {
-            updateGlyphs();
-        }
         glyphs.setSorts("Y");
+        if (started) {
+            updateGlyphs(rep);
+        }
     }
 
 
+    /**
+     * Sorts by Genre
+     * 
+     * @param button
+     *            sortGenre button
+     */
     public void clickedGenre(Button button) {
         glyphs.sortGenre();
         page = 0;
-        if (started) {
-            updateGlyphs();
-        }
         glyphs.setSorts("G");
+        if (started) {
+            updateGlyphs(rep);
+        }
     }
 
 
+    /**
+     * Represents Glyphs by Hobby
+     * 
+     * @param button
+     *            Hobby button
+     */
     public void clickedHobby(Button button) {
         window.removeAllShapes();
+        rep = 1;
         if (started) {
-            updateGlyphs();
+            updateGlyphs(rep);
         }
         else {
             placeGlyphs();
@@ -240,10 +293,17 @@ public class GUIDisplayWindow {
     }
 
 
+    /**
+     * Represents Glyphs by Major
+     * 
+     * @param button
+     *            Major button
+     */
     public void clickedMajor(Button button) {
         window.removeAllShapes();
+        rep = 2;
         if (started) {
-            updateGlyphs();
+            updateGlyphs(rep);
         }
         else {
             placeGlyphs();
@@ -254,10 +314,17 @@ public class GUIDisplayWindow {
     }
 
 
+    /**
+     * Represents Glyphs by Region
+     * 
+     * @param button
+     *            Region button
+     */
     public void clickedRegion(Button button) {
         window.removeAllShapes();
+        rep = 3;
         if (started) {
-            updateGlyphs();
+            updateGlyphs(rep);
         }
         else {
             placeGlyphs();
@@ -268,11 +335,20 @@ public class GUIDisplayWindow {
     }
 
 
+    /**
+     * Exits the program
+     * 
+     * @param button
+     *            Quit button
+     */
     public void clickedQuit(Button button) {
         System.exit(0);
     }
 
-
+    /**
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         GUIDisplayWindow gui = new GUIDisplayWindow();
     }
