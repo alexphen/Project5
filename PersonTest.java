@@ -53,6 +53,7 @@ public class PersonTest extends student.TestCase {
         assertEquals(1, list.get(3).intValue());
         assertEquals(0, list.get(4).intValue());
         assertEquals(1, list.get(5).intValue());
+        
     }
 
 
@@ -67,14 +68,17 @@ public class PersonTest extends student.TestCase {
 
         String strPerson4 = "11,10/14/2015 12:28,Other Engineering,Southeast,reading,Yes,Yes,Yes,Yes,No";
         String strPerson5 = "128,10/19/2015 10:56,Other,Outside of United States,music,No,No,Yes,Yes,Yes,Yes,No,No,No";
+       
         Person person2 = new Person(strPerson2);
         Person person3 = new Person(strPerson3);
         Person person4 = new Person(strPerson4);
         Person person5 = new Person(strPerson5);
         
+        
         assertEquals(MajorEnum.MATH_CMDA, person2.getMajor());
         assertEquals(HobbyEnum.SPORTS, person2.getHobby());
         assertEquals(StateEnum.OTHER_US, person2.getState());
+       
         assertTrue(person2.getValid());
         
         assertEquals(MajorEnum.MATH_CMDA, person3.getMajor());
@@ -111,5 +115,16 @@ public class PersonTest extends student.TestCase {
         assertFalse(person7.getValid());
         assertFalse(person8.getValid());
         assertFalse(person9.getValid());
+        
+        String strPerson10 = "";
+        Person person10 = new Person(strPerson10);
+        
+        String strPerson11 = "11";
+        Person person11 = new Person(strPerson11);
+        
+        String strPerson12 = "129,10/19/2015 10:56,,,music,No,No,Yes,Yes,Yes,Yes,No,No,";
+        Person person12 = new Person(strPerson12);
+        
+        String strPerson13 = "129,10/19/2015 10:56,potato,fries,ninny,No,No,Yes,Yes,Yes,Yes,No,No,";
     }
 }

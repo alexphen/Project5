@@ -58,15 +58,17 @@ public class Person {
      *            the details of a person to be added into this person object
      */
     public Person(String person) {
-        if (person.endsWith(",")){
-            person = person + "Empty";
+        if (!person.isEmpty()) {
+            if (person.endsWith(",")) {
+                person = person + "Empty";
+            }
+            // person.replaceAll(",,", ",Empty,");
+            answers = new ArrayList<>();
+            valid = true;
+            scan = new Scanner(person);
+            scan.useDelimiter(",");
+            convertAns();
         }
-        //person.replaceAll(",,", ",Empty,");
-        answers = new ArrayList<>();
-        valid = true;
-        scan = new Scanner(person);
-        scan.useDelimiter(",");
-        convertAns();
 
     }
 
@@ -111,22 +113,17 @@ public class Person {
     public boolean getValid() {
         return valid;
     }
-    
+
+
     /**
      * Returns the array list of answers
+     * 
      * @return ArrayList<Integer> the arry of answers
      */
     public ArrayList<Integer> getAnswers() {
         return answers;
     }
-    
-    /**
-     * Returns an array of answers
-     * @return Object[] the answers in an array of objects
-     */
-    public Object[] toArray() {
-        return answers.toArray();
-    }
+
 
     /**
      * Converts the string to set the given fields and fills the array of
@@ -140,17 +137,22 @@ public class Person {
                 scan.next();
             }
         } // End for
-        
+
         String strMajor = nextString();
         String strState = nextString();
         String strHobby = nextString();
-
-        setMajor(strMajor);
-        setState(strState);
-        setHobby(strHobby);
-
-        fillAnswers();
-  
+        if (strMajor != null) {
+            setMajor(strMajor);
+        }
+        if (strState != null) {
+            setState(strState);
+        }
+        if (strHobby != null) {
+            setHobby(strHobby);
+        }
+        if (valid) {
+            fillAnswers();
+        }
 
     }
 
@@ -179,7 +181,7 @@ public class Person {
             case "Other":
                 major = MajorEnum.OTHER;
                 break;
-                
+
             default:
                 valid = false;
                 major = null;
@@ -211,7 +213,7 @@ public class Person {
             case "Outside of United States":
                 state = StateEnum.OTHER;
                 break;
-                
+
             default:
                 valid = false;
                 state = null;
@@ -235,7 +237,7 @@ public class Person {
             case "art":
                 hobby = HobbyEnum.ART;
                 break;
-                
+
             case "sports":
                 hobby = HobbyEnum.SPORTS;
                 break;
@@ -243,7 +245,7 @@ public class Person {
             case "music":
                 hobby = HobbyEnum.MUSIC;
                 break;
-                
+
             default:
                 valid = false;
                 state = null;
@@ -268,8 +270,8 @@ public class Person {
                     answers.add(-1);
                     break;
             }
-        }  
-        
+        }
+
     }
 
 
@@ -286,7 +288,5 @@ public class Person {
         }
         return str;
     }
-    
-    
 
 }
