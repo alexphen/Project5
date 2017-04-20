@@ -23,6 +23,7 @@ public class GlyphListTest extends student.TestCase {
     private Glyph g2;
     private Glyph g3;
 
+
     /**
      * Initiializes fields
      */
@@ -36,7 +37,8 @@ public class GlyphListTest extends student.TestCase {
         g2 = new Glyph(song2, 1, 1);
         g3 = new Glyph(song3, 1, 1);
     }
-    
+
+
     /**
      * Tests default glyph list
      */
@@ -45,11 +47,12 @@ public class GlyphListTest extends student.TestCase {
         gl.add(g2);
         gl.add(g3);
         GlyphList defGL = GlyphList.defaultGlyphList();
-        
+
         for (int i = 0; i < 3; i++) {
             assertEquals(defGL.get(i).getSong(), gl.get(i).getSong());
         }
     }
+
 
     /**
      * Tests add method
@@ -62,6 +65,7 @@ public class GlyphListTest extends student.TestCase {
         gl.add(new Glyph(song3, 1, 1));
         assertEquals(gl.size(), 3);
     }
+
 
     /**
      * Tests sortArtist method
@@ -152,9 +156,11 @@ public class GlyphListTest extends student.TestCase {
         gl.add(g3);
 
         assertEquals(gl.toString(),
-            "[All These Things I've Done Glyph, Upside Down Glyph, Uma Thurman Glyph]");
+            "[All These Things I've Done Glyph, "
+            + "Upside Down Glyph, Uma Thurman Glyph]");
     }
-    
+
+
     /**
      * Tests iterator
      */
@@ -162,7 +168,7 @@ public class GlyphListTest extends student.TestCase {
         gl.add(g1);
         gl.add(g2);
         gl.add(g3);
-        
+
         assertTrue(iter.hasNext());
         assertEquals(iter.next(), g1);
         assertTrue(iter.hasNext());
