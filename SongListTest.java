@@ -39,9 +39,9 @@ public class SongListTest extends student.TestCase {
         sl.add(song3);
 
         assertEquals(sl.toString(),
-            "[The Killers,All These Things I've Done,2005,Alternative; "
-            + "Diana Ross,Upside Down,1980,Disco; "
-            + "Fall Out Boy,Uma Thurman,2015,Rock]");
+            "[All These Things I've Done,The Killers,2005,Alternative; "
+            + "Upside Down,Diana Ross,1980,Disco; "
+            + "Uma Thurman,Fall Out Boy,2015,Rock]");
     }
 
 
