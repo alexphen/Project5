@@ -87,9 +87,9 @@ public class GlyphListTest extends student.TestCase {
      * Tests sortGenre method
      */
     public void testSortGenre() {
-        gl.add(g1);
-        gl.add(g2);
         gl.add(g3);
+        gl.add(g2);
+        gl.add(g1);
 
         gl.sortGenre();
         gl.setSorts("G");
