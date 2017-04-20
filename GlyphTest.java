@@ -1,4 +1,4 @@
-package itemclasses;
+package prj5;
 
 import java.util.NoSuchElementException;
 import CS2114.Shape;
@@ -36,8 +36,7 @@ public class GlyphTest extends student.TestCase {
         Song song1 = glyph.getSong();
         assertEquals("Don't Stop Believing,Billy Joel,1925,HipHop", song1
             .toString());
-        assertEquals("Don't Stop Believing,Billy Joel,1925,HipHop", glyph
-            .getSongString());
+        assertEquals("Don't Stop Believing Glyph", glyph.toString());
     }
 
 
@@ -177,14 +176,14 @@ public class GlyphTest extends student.TestCase {
         glyph.update(1);
         DLList<Shape> list = glyph.getGlyphShapes();
 
-        assertEquals(100, list.get(2).getWidth());
-        assertEquals(83, list.get(3).getWidth());
-        assertEquals(38, list.get(4).getWidth());
+        assertEquals(100, list.get(0).getWidth());
+        assertEquals(83, list.get(1).getWidth());
+        assertEquals(38, list.get(2).getWidth());
+        assertEquals(23, list.get(3).getWidth());
+        assertEquals(92, list.get(4).getWidth());
         assertEquals(23, list.get(5).getWidth());
-        assertEquals(92, list.get(6).getWidth());
-        assertEquals(23, list.get(7).getWidth());
-        assertEquals(45, list.get(8).getWidth());
-        assertEquals(34, list.get(9).getWidth());
+        assertEquals(45, list.get(6).getWidth());
+        assertEquals(34, list.get(7).getWidth());
 
     }
 
@@ -202,18 +201,18 @@ public class GlyphTest extends student.TestCase {
         song.getMajor()[5] = 32;
         song.getMajor()[6] = 70;
         song.getMajor()[7] = 21;
-        
+
         glyph.update(2);
         DLList<Shape> list = glyph.getGlyphShapes();
 
-        assertEquals(55, list.get(2).getWidth());
-        assertEquals(21, list.get(3).getWidth());
-        assertEquals(70, list.get(4).getWidth());
-        assertEquals(52, list.get(5).getWidth());
-        assertEquals(91, list.get(6).getWidth());
-        assertEquals(32, list.get(7).getWidth());
-        assertEquals(70, list.get(8).getWidth());
-        assertEquals(21, list.get(9).getWidth());
+        assertEquals(55, list.get(0).getWidth());
+        assertEquals(21, list.get(1).getWidth());
+        assertEquals(70, list.get(2).getWidth());
+        assertEquals(52, list.get(3).getWidth());
+        assertEquals(91, list.get(4).getWidth());
+        assertEquals(32, list.get(5).getWidth());
+        assertEquals(70, list.get(6).getWidth());
+        assertEquals(21, list.get(7).getWidth());
     }
 
 
@@ -230,19 +229,18 @@ public class GlyphTest extends student.TestCase {
         song.getState()[5] = 7;
         song.getState()[6] = 97;
         song.getState()[7] = 54;
-        
-        
+
         glyph.update(3);
         DLList<Shape> list = glyph.getGlyphShapes();
 
-        assertEquals(68, list.get(2).getWidth());
+        assertEquals(68, list.get(0).getWidth());
+        assertEquals(12, list.get(1).getWidth());
+        assertEquals(32, list.get(2).getWidth());
         assertEquals(12, list.get(3).getWidth());
-        assertEquals(32, list.get(4).getWidth());
-        assertEquals(12, list.get(5).getWidth());
-        assertEquals(65, list.get(6).getWidth());
-        assertEquals(7, list.get(7).getWidth());
-        assertEquals(97, list.get(8).getWidth());
-        assertEquals(54, list.get(9).getWidth());
+        assertEquals(65, list.get(4).getWidth());
+        assertEquals(7, list.get(5).getWidth());
+        assertEquals(97, list.get(6).getWidth());
+        assertEquals(54, list.get(7).getWidth());
     }
 
 }

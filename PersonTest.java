@@ -1,4 +1,4 @@
-package musicpreference;
+package prj5;
 
 import java.util.ArrayList;
 
@@ -27,9 +27,9 @@ public class PersonTest extends student.TestCase {
      * Tests the get methods
      */
     public void testGets() {
-        assertEquals(Hobby.ART, person.getHobby());
-        assertEquals(Major.COMPUTER_SCIENCE, person.getMajor());
-        assertEquals(Region.SOUTHEAST, person.getRegion());
+        assertEquals(HobbyEnum.ART, person.getHobby());
+        assertEquals(MajorEnum.COMPUTER_SCIENCE, person.getMajor());
+        assertEquals(StateEnum.SOUTHEAST, person.getState());
         assertTrue(person.getValid());
     }
 
@@ -41,9 +41,9 @@ public class PersonTest extends student.TestCase {
         String person1String =
             "2,04/15/17 9:54,Other Engineering,Northeast,music,Yes,No,,Yes,No,Yes";
         Person person1 = new Person(person1String);
-        assertEquals(Hobby.MUSIC, person1.getHobby());
-        assertEquals(Major.OTHER_ENGE, person1.getMajor());
-        assertEquals(Region.NORTHEAST, person1.getRegion());
+        assertEquals(HobbyEnum.MUSIC, person1.getHobby());
+        assertEquals(MajorEnum.OTHER_ENGE, person1.getMajor());
+        assertEquals(StateEnum.NORTHEAST, person1.getState());
         assertTrue(person1.getValid());
 
         ArrayList<Integer> list = person1.getAnswers();
@@ -72,24 +72,24 @@ public class PersonTest extends student.TestCase {
         Person person4 = new Person(strPerson4);
         Person person5 = new Person(strPerson5);
         
-        assertEquals(Major.MATH_CMDA, person2.getMajor());
-        assertEquals(Hobby.SPORTS, person2.getHobby());
-        assertEquals(Region.OTHER_US, person2.getRegion());
+        assertEquals(MajorEnum.MATH_CMDA, person2.getMajor());
+        assertEquals(HobbyEnum.SPORTS, person2.getHobby());
+        assertEquals(StateEnum.OTHER_US, person2.getState());
         assertTrue(person2.getValid());
         
-        assertEquals(Major.MATH_CMDA, person3.getMajor());
-        assertEquals(Hobby.SPORTS, person3.getHobby());
-        assertEquals(Region.OTHER_US, person3.getRegion());
+        assertEquals(MajorEnum.MATH_CMDA, person3.getMajor());
+        assertEquals(HobbyEnum.SPORTS, person3.getHobby());
+        assertEquals(StateEnum.OTHER_US, person3.getState());
         assertTrue(person3.getValid());
         
-        assertEquals(Major.OTHER_ENGE, person4.getMajor());
-        assertEquals(Hobby.READ, person4.getHobby());
-        assertEquals(Region.SOUTHEAST, person4.getRegion());
+        assertEquals(MajorEnum.OTHER_ENGE, person4.getMajor());
+        assertEquals(HobbyEnum.READ, person4.getHobby());
+        assertEquals(StateEnum.SOUTHEAST, person4.getState());
         assertTrue(person4.getValid());
         
-        assertEquals(Major.OTHER, person5.getMajor());
-        assertEquals(Hobby.MUSIC, person5.getHobby());
-        assertEquals(Region.OTHER, person5.getRegion());
+        assertEquals(MajorEnum.OTHER, person5.getMajor());
+        assertEquals(HobbyEnum.MUSIC, person5.getHobby());
+        assertEquals(StateEnum.OTHER, person5.getState());
         assertTrue(person5.getValid());
         
         

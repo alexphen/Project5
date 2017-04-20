@@ -1,4 +1,4 @@
-package itemclasses;
+package prj5;
 
 import CS2114.Shape;
 

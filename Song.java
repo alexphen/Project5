@@ -1,4 +1,4 @@
-package itemclasses;
+package prj5;
 
 /**
  * 
@@ -68,8 +68,8 @@ public class Song {
      *            the genre of this song
      */
     public Song(
-        String artistName,
         String songTitle,
+        String artistName,        
         int yearReleased,
         String genre) {
 

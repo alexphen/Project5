@@ -1,4 +1,4 @@
-package itemclasses;
+package prj5;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -161,19 +161,19 @@ public class Person {
 
         switch (str) {
             case "Computer Science":
-                major = Major.COMPUTER_SCIENCE;
+                major = MajorEnum.COMPUTER_SCIENCE;
                 break;
 
             case "Other Engineering":
-                major = Major.OTHER_ENGE;
+                major = MajorEnum.OTHER_ENGE;
                 break;
 
             case "Math or CMDA":
-                major = Major.MATH_CMDA;
+                major = MajorEnum.MATH_CMDA;
                 break;
 
             case "Other":
-                major = Major.OTHER;
+                major = MajorEnum.OTHER;
                 break;
                 
             default:
@@ -193,19 +193,19 @@ public class Person {
 
         switch (str) {
             case "Northeast":
-                state = State.NORTHEAST;
+                state = StateEnum.NORTHEAST;
                 break;
 
             case "Southeast":
-                state = State.SOUTHEAST;
+                state = StateEnum.SOUTHEAST;
                 break;
 
             case "United States (other than Southeast or Northwest)":
-                state = State.OTHER_US;
+                state = StateEnum.OTHER_US;
                 break;
 
             case "Outside of United States":
-                state = State.OTHER;
+                state = StateEnum.OTHER;
                 break;
                 
             default:
@@ -225,19 +225,19 @@ public class Person {
 
         switch (str) {
             case "reading":
-                hobby = Hobby.READ;
+                hobby = HobbyEnum.READ;
                 break;
 
             case "art":
-                hobby = Hobby.ART;
+                hobby = HobbyEnum.ART;
                 break;
                 
             case "sports":
-                hobby = Hobby.SPORTS;
+                hobby = HobbyEnum.SPORTS;
                 break;
 
             case "music":
-                hobby = Hobby.MUSIC;
+                hobby = HobbyEnum.MUSIC;
                 break;
                 
             default:
@@ -262,7 +262,7 @@ public class Person {
                     answers.add(0);
                     break;
             }
-        }
+        }        
     }
 
 

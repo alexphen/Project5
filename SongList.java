@@ -1,7 +1,7 @@
 /**
  * 
  */
-package musicpreference;
+package prj5;
 /**
  * @author aphen
  * @version <4/12/17>
@@ -15,6 +15,7 @@ public class SongList extends DLList<Song> {
     }
     /**
      * Iterator for SongList
+     * @return SongListIterator is the iterator for this song list
      */
     public SongListIterator iterator() {
         return new SongListIterator();
@@ -54,6 +55,7 @@ public class SongList extends DLList<Song> {
         }
         /**
          * Determines if the list has another entry
+         * @return boolean {@code true} if there is another entry in the list {@code false} otherwise
          */
         public boolean hasNext() {
             return super.hasNext();

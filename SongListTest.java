@@ -1,7 +1,7 @@
 /**
  * 
  */
-package musicpreference;
+package prj5;
 
 /**
  * @author aphen
@@ -39,7 +39,9 @@ public class SongListTest extends student.TestCase {
         sl.add(song3);
 
         assertEquals(sl.toString(),
-            "[All These Things I've Done, The Killers, 2005, Alternative; Upside Down, Diana Ross, 1980, Disco; Uma Thurman, Fall Out Boy, 2015, Rock]");
+            "[The Killers,All These Things I've Done,2005,Alternative; "
+            + "Diana Ross,Upside Down,1980,Disco; "
+            + "Fall Out Boy,Uma Thurman,2015,Rock]");
     }
 
 
@@ -49,7 +51,7 @@ public class SongListTest extends student.TestCase {
         sl.add(song3);
 
         Object[] arr = sl.toArray();
-        Song[] songArr = {song1, song2, song3};
+        Song[] songArr = { song1, song2, song3 };
         for (int i = 0; i < 3; i++) {
             assertEquals(arr[i], songArr[i]);
         }

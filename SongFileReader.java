@@ -1,4 +1,4 @@
-package itemclasses;
+package prj5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,18 +15,20 @@ public class SongFileReader {
      * Scanner to read the file
      */
     private Scanner scan;
-    
+
     /**
-     * Song list 
+     * Song list
      */
     SongList songList;
-    
+
+
     /**
      * The constructor for SongFileReader
-     * @param the file that is going to be read into the scanner
+     * 
+     * @param the
+     *            file that is going to be read into the scanner
      */
     public SongFileReader(File file) {
-        //this.file = file;
         try {
             scan = new Scanner(file);
         }
@@ -34,23 +36,29 @@ public class SongFileReader {
             e.getStackTrace();
         }
         songList = new SongList();
-        
+
     }
-    
+
+
     /**
      * Reads the song file, creates songs, then adds the song to a list of songs
      */
     public SongList readSongFile() {
-        while(scan.hasNext()) {
-            String songTitle = scan.next();
-            String artistName = scan.next();
-            Integer yrReleased = Integer.valueOf(scan.next());
-            String genre = scan.next();
-            
-            Song song = new Song(songTitle, artistName, yrReleased, genre);
-            songList.add(song);
+        if (scan != null) {
+            scan.nextLine();
+            while (scan.hasNextLine()) {
+                Scanner scan1 = new Scanner(scan.nextLine());
+                scan1.useDelimiter(",");
+                String songTitle = scan1.next();
+                String artistName = scan1.next();
+                Integer yrReleased = Integer.valueOf(scan1.next());
+                String genre = scan1.next();
+
+                Song song = new Song(songTitle, artistName, yrReleased, genre);
+                songList.add(song);
+            }
         }
         return songList;
     }
-    
+
 }

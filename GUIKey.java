@@ -1,7 +1,7 @@
 /**
  * 
  */
-package musicpreference;
+package prj5;
 
 import java.awt.Color;
 import CS2114.Shape;
@@ -26,7 +26,7 @@ public class GUIKey extends DLList<Shape> {
     private final int STARTY = 450;
 
 
-    public GUIKey(Category cat) {
+    public GUIKey(CategoryEnum cat) {
         border = new Shape(STARTX, STARTY, WIDTH, HEIGHT, Color.WHITE);
         border.setForegroundColor(Color.BLACK);
         title = new TextShape(STARTX + 5, STARTY + 5, cat + " Legend");
@@ -49,7 +49,7 @@ public class GUIKey extends DLList<Shape> {
     }
 
 
-    private DLList<TextShape> setLegend(Category cat) {
+    private DLList<TextShape> setLegend(CategoryEnum cat) {
         TextShape pink = new TextShape(STARTX + 10, STARTY + 25, "", Color.PINK);
         pink.setBackgroundColor(Color.WHITE);
         TextShape blue = new TextShape(STARTX + 10, STARTY + 45, "", Color.BLUE);
