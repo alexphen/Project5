@@ -39,11 +39,17 @@ public class Input {
      * Person Reader
      */
     private PersonFileReader pFR;
-    
+
     int readCount = 0;
     int artCount = 0;
     int sportsCount = 0;
     int musicCount = 0;
+    int readCountLike = 0;
+    int artCountLike = 0;
+    int sportsCountLike = 0;
+    int musicCountLike = 0;
+
+
     /**
      * Input constructor
      */
@@ -86,6 +92,14 @@ public class Input {
         int size = songList.size();
         for (int i = 0; i < songList.size(); i++) {
             Song song = songList.get(i);
+            readCount = 0;
+            artCount = 0;
+            sportsCount = 0;
+            musicCount = 0;
+            readCountLike = 0;
+            artCountLike = 0;
+            sportsCountLike = 0;
+            musicCountLike = 0;
             for (int j = 0; j < personList.size(); j++) {
                 Person person = personList.get(j);
                 ArrayList<Integer> aInts = person.getAnswers();
@@ -96,24 +110,47 @@ public class Input {
                 int likeVal = (i * 2 + 1);
                 switch (hobby) {
                     case READ:
-                        readCount++;
-                        song.getHobbies()[0] += aInts.get(listenVal);
-                        song.getHobbies()[1] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            readCount++;
+                            song.getHobbies()[0] += aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            readCountLike++;
+                            song.getHobbies()[1] += aInts.get(likeVal);
+                        }
                         break;
                     case ART:
-                        artCount++;
-                        song.getHobbies()[2] += aInts.get(listenVal);
-                        song.getHobbies()[3] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            artCount++;
+                            song.getHobbies()[2] += aInts.get(listenVal);
+
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            artCountLike++;
+                            song.getHobbies()[3] += aInts.get(likeVal);
+                        }
                         break;
                     case SPORTS:
-                        sportsCount++;
-                        song.getHobbies()[4] += aInts.get(listenVal);
-                        song.getHobbies()[5] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            sportsCount++;
+                            song.getHobbies()[4] += aInts.get(listenVal);
+
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            sportsCountLike++;
+                            song.getHobbies()[5] += aInts.get(likeVal);
+                        }
                         break;
                     case MUSIC:
-                        musicCount++;
-                        song.getHobbies()[6] += aInts.get(listenVal);
-                        song.getHobbies()[7] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            musicCount++;
+                            song.getHobbies()[6] += aInts.get(listenVal);
+
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            musicCountLike++;
+                            song.getHobbies()[7] += aInts.get(likeVal);
+                        }
                         break;
                     default:
                         break;
@@ -157,89 +194,78 @@ public class Input {
                         song.getState()[6] = aInts.get(listenVal);
                         song.getState()[7] = aInts.get(likeVal);
                         break;
-                }//End Switch 3
-                
-            }//End person for
+                }// End Switch 3
+
+            } // End person for
             Glyph glyph = new Glyph(song, 0, 0);
             glyphList.add(glyph);
             perHobbies(song.getHobbies());
-            System.out.println("song title " + song.getSongTitle() 
-            + "\nsong artist " + song.getArtistName() 
-            + "\nsong genre " + song.getGenre() 
-            + "\nsong year " + song.getYearReleased() 
-            + "\nheard\nreading" + song.getHobbies()[0]
-                + " art" + song.getHobbies()[2] + 
-                " sports" + song.getHobbies()[4]+ 
-                " music" + song.getHobbies()[6] + 
-                "\nlikes\nreading" + song.getHobbies()[1] + 
-                " art" + song.getHobbies()[3] + 
-                " sports" + song.getHobbies()[5] + 
-                " music" + song.getHobbies()[7] + "\n");
-            
-        }//End song for
-        
+
+            /*
+             * System.out.println("song title " + song.getSongTitle()
+             * + "\nsong artist " + song.getArtistName()
+             * + "\nsong genre " + song.getGenre()
+             * + "\nsong year " + song.getYearReleased()
+             * + "\nheard\nreading" + song.getHobbies()[0]
+             * + " art" + song.getHobbies()[2] +
+             * " sports" + song.getHobbies()[4]+
+             * " music" + song.getHobbies()[6] +
+             * "\nlikes\nreading" + song.getHobbies()[1] +
+             * " art" + song.getHobbies()[3] +
+             * " sports" + song.getHobbies()[5] +
+             * " music" + song.getHobbies()[7] + "\n");
+             */
+
+        } // End song for
+        glyphList.sortGenre();
+        glyphList.sortTitle();
+
     }
-    
+
+
     private void perHobbies(int[] hobbies) {
-        if (readCount == 0) {
-            hobbies[0] = 0;
-            hobbies[1] = 0;
-        }
-        else {
-            double per = ((double)hobbies[0]/readCount) * 100;
-            double per1 = ((double)hobbies[1]/readCount) * 100;
+        if (readCount != 0) {
+            double per = ((double)hobbies[0] / readCount) * 100;
+            double per1 = ((double)hobbies[1] / readCountLike) * 100;
             int x = (int)per;
             int x1 = (int)per1;
             hobbies[0] = x;
             hobbies[1] = x1;
-            
         }
-        if (artCount == 0) {
-            hobbies[2] = 0;
-            hobbies[3] = 0;
-        }
-        else {
-            double per = ((double)hobbies[2]/artCount) * 100;
-            double per1 = ((double)hobbies[3]/artCount) * 100;
+
+        if (artCount != 0) {
+            double per = ((double)hobbies[2] / artCount) * 100;
+            double per1 = ((double)hobbies[3] / artCountLike) * 100;
             int x = (int)per;
             int x1 = (int)per1;
             hobbies[2] = x;
             hobbies[3] = x1;
-            
         }
-        
-        if (sportsCount == 0) {
-            hobbies[4] = 0;
-            hobbies[5] = 0;
-        }
-        else {
-            double per = ((double)hobbies[4]/sportsCount) * 100;
-            double per1 = ((double)hobbies[5]/sportsCount) * 100;
+
+        if (sportsCount != 0) {
+            double per = ((double)hobbies[4] / sportsCount) * 100;
+            double per1 = ((double)hobbies[5] / sportsCountLike) * 100;
             int x = (int)per;
             int x1 = (int)per1;
             hobbies[4] = x;
             hobbies[5] = x1;
-            
         }
-        if (musicCount == 0) {
-            hobbies[6] = 0;
-            hobbies[7] = 0;
-        }
-        else {
-            double per = ((double)hobbies[6]/musicCount) * 100;
-            double per1 = ((double)hobbies[7]/musicCount) * 100;
+        if (musicCount != 0) {
+            double per = ((double)hobbies[6] / musicCount) * 100;
+            double per1 = ((double)hobbies[7] / musicCountLike) * 100;
             int x = (int)per;
             int x1 = (int)per1;
             hobbies[6] = x;
             hobbies[7] = x1;
-            
         }
+
     }
-    
+
+
     public static void main(String args0[]) {
         File personFile = new File(args0[0]);
-        File songFile = new File(args0[1]);        
-        Input input  = new Input(songFile, personFile);
+        File songFile = new File(args0[1]);
+        Input input = new Input(songFile, personFile);
     }
 
 }

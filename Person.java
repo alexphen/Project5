@@ -58,6 +58,10 @@ public class Person {
      *            the details of a person to be added into this person object
      */
     public Person(String person) {
+        if (person.endsWith(",")){
+            person = person + "Empty";
+        }
+        //person.replaceAll(",,", ",Empty,");
         answers = new ArrayList<>();
         valid = true;
         scan = new Scanner(person);
@@ -257,12 +261,15 @@ public class Person {
                 case "Yes":
                     answers.add(1);
                     break;
-
-                default:
+                case "No":
                     answers.add(0);
                     break;
+                default:
+                    answers.add(-1);
+                    break;
             }
-        }        
+        }  
+        
     }
 
 

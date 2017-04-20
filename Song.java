@@ -51,7 +51,7 @@ public class Song {
      * The defualt constructor for this class
      */
     public Song() {
-        this("Billy Joel", "Don't Stop Believing", 1925, "HipHop");
+        this("Don't Stop Believing", "Billy Joel", 1925, "HipHop");
     }
 
 
@@ -69,15 +69,15 @@ public class Song {
      */
     public Song(
         String songTitle,
-        String artistName,        
+        String artistName,
         int yearReleased,
         String genre) {
 
-        this.artistName = artistName;
         this.songTitle = songTitle;
+        this.artistName = artistName;
         this.yearReleased = yearReleased;
         this.genre = genre;
-        
+
         hobbies = new int[8];
         major = new int[8];
         state = new int[8];
@@ -94,6 +94,7 @@ public class Song {
         return artistName;
     }
 
+
     /**
      * Returns the songTitle
      * 
@@ -102,52 +103,66 @@ public class Song {
     public String getSongTitle() {
         return songTitle;
     }
-    
+
+
     /**
      * Return the yearReleased
+     * 
      * @return int the year this song was released
      */
     public int getYearReleased() {
         return yearReleased;
     }
-    
+
+
     /**
      * Return the genre
+     * 
      * @return String the genre of this song
      */
     public String getGenre() {
         return genre;
     }
+
+
     /**
      * Return the array of hobby listens and likes
+     * 
      * @return int[] that holds listens and likes for hobby
      */
     public int[] getHobbies() {
         return hobbies;
     }
-    
+
+
     /**
      * Return the array of major listens and likes
+     * 
      * @return int[] that holds listens and likes for majors
      */
     public int[] getMajor() {
         return major;
     }
-    
+
+
     /**
      * Return the array of state listens and likes
+     * 
      * @return int[] that holds listens and likes for state
      */
     public int[] getState() {
         return state;
     }
-    
+
+
     /**
      * Returns a readable string representation of this song
+     * 
      * @return String a readable string of this song
      */
     public String toString() {
-        String strSong = songTitle + "," + artistName + "," + yearReleased + "," + genre;
+        String strSong = songTitle + "," + artistName + "," + yearReleased + ","
+            + genre;
         return strSong;
     }
 
