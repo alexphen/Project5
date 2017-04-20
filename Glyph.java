@@ -112,6 +112,10 @@ public class Glyph extends DLList<Shape>{
         this.add(title);
         this.add(border);
     }
+    /**
+     * Sets the sort for this glyph
+     * @param str identifies what sort
+     */
     
     public void setSort(String str) {
         if (str.equals("A")) {
@@ -186,7 +190,13 @@ public class Glyph extends DLList<Shape>{
     public DLList<Shape> getGlyphShapes() {
         return glyph;
     }
-
+    
+    /**
+     * Getter for sort
+     */
+    public String getSort() {
+        return sort;
+    }
     
     /**
      * Updates the array of listenLike
