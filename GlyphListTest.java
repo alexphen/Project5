@@ -11,6 +11,9 @@ import java.util.Iterator;
  */
 public class GlyphListTest extends student.TestCase {
 
+    /**
+     * Fields
+     */
     private GlyphList gl;
     private Song song1;
     private Song song2;
@@ -20,7 +23,9 @@ public class GlyphListTest extends student.TestCase {
     private Glyph g2;
     private Glyph g3;
 
-
+    /**
+     * Initiializes fields
+     */
     public void setUp() {
         gl = new GlyphList();
         song1 = GlyphList.defaultSong;
@@ -46,7 +51,9 @@ public class GlyphListTest extends student.TestCase {
         }
     }
 
-
+    /**
+     * Tests add method
+     */
     public void testAdd() {
         gl.add(new Glyph(song1, 1, 1));
         assertEquals(gl.size(), 1);
@@ -56,7 +63,9 @@ public class GlyphListTest extends student.TestCase {
         assertEquals(gl.size(), 3);
     }
 
-
+    /**
+     * Tests sortArtist method
+     */
     public void testSortArtist() {
         gl.add(g1);
         gl.add(g2);
@@ -70,6 +79,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests sortGenre method
+     */
     public void testSortGenre() {
         gl.add(g1);
         gl.add(g2);
@@ -83,6 +95,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests sortTitle method
+     */
     public void testSortTitle() {
         gl.add(g1);
         gl.add(g2);
@@ -96,6 +111,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests sortYear method
+     */
     public void testSortYear() {
         gl.add(g1);
         gl.add(g2);
@@ -109,6 +127,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests toArray method
+     */
     public void testToArray() {
         gl.add(g1);
         gl.add(g2);
@@ -122,6 +143,9 @@ public class GlyphListTest extends student.TestCase {
     }
 
 
+    /**
+     * Tests toString method
+     */
     public void testToString() {
         gl.add(g1);
         gl.add(g2);
