@@ -43,6 +43,9 @@ public class GlyphTest extends student.TestCase {
         glyph.setSort("G");
         assertEquals("Genre: HipHop", glyph.getSort());
         
+        glyph.setSort("B");
+        assertEquals("Genre: HipHop", glyph.getSort());
+        
         
         
         assertEquals("Don't Stop Believing Glyph", glyph.toString());
