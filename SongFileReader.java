@@ -19,7 +19,7 @@ public class SongFileReader {
     /**
      * Song list
      */
-    SongList songList;
+    private SongList songList;
 
 
     /**

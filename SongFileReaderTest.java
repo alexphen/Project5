@@ -13,17 +13,17 @@ public class SongFileReaderTest extends student.TestCase {
     /**
      * SongFileReader field
      */
-    SongFileReader sFR;
+    private SongFileReader sFR;
 
     /**
      * The file being read to the file reader
      */
-    File file;
+    private File file;
 
     /**
      * SongList field
      */
-    SongList songList;
+    private SongList songList;
 
 
     public void setUp() {
