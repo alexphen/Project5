@@ -45,8 +45,11 @@ public class GlyphList extends DLList<Glyph> {
         dGL.add(new Glyph(defaultSong1, START, START));
         dGL.add(new Glyph(defaultSong2, START, START));
         dGL.add(new Glyph(defaultSong2, START, START));
+        /*dGL.add(new Glyph(defaultSong2, START, START));
         dGL.add(new Glyph(defaultSong2, START, START));
         dGL.add(new Glyph(defaultSong2, START, START));
+        dGL.add(new Glyph(defaultSong2, START, START));
+        dGL.add(new Glyph(defaultSong2, START, START));*/
         return dGL;
     }
 

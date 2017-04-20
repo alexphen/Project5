@@ -108,7 +108,8 @@ public class GUIDisplayWindow {
             for (int i = page * 9; i < glyphs.size() % 9; i++) {
                 Glyph curr = glyphs.get(i);
                 for (int k = 0; k < curr.size(); k++) {
-                    curr.get(k).move(xIncrement * (i % 3), yIncrement * (i / 3));
+                    curr.get(k).move(xIncrement * (i % 3), yIncrement * (i
+                        / 3));
                     addShapeList(curr);
                 }
             }
@@ -117,7 +118,8 @@ public class GUIDisplayWindow {
             for (int i = page * 9; i < 9; i++) {
                 Glyph curr = glyphs.get(i);
                 for (int k = 0; k < curr.size(); k++) {
-                    curr.get(k).move(xIncrement * (i % 3), yIncrement * (i / 3));
+                    curr.get(k).move(xIncrement * (i % 3), yIncrement * (i
+                        / 3));
                     addShapeList(curr);
                 }
             }
@@ -129,15 +131,13 @@ public class GUIDisplayWindow {
         if (page == glyphs.size() / 9) {
             for (int i = page * 9; i < glyphs.size() % 9; i++) {
                 Glyph curr = glyphs.get(i);
-                curr.getBorder().moveTo(STARTX + xIncrement * (i % 3), STARTY
-                    + yIncrement * (i / 3));
                 curr.update(rep);
+                curr.setStart(STARTX + xIncrement * (i % 3), STARTY
+                    + yIncrement * (i / 3));
                 addShapeList(curr);
             }
         }
-        else
-
-        {
+        else {
             for (int i = page * 9; i < 9; i++) {
                 Glyph curr = glyphs.get(i);
                 curr.getBorder().moveTo(STARTX + xIncrement * (i % 3), STARTY
