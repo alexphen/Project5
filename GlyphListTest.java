@@ -39,9 +39,9 @@ public class GlyphListTest extends student.TestCase {
         gl.add(new Glyph(song3, 1, 1));
 
         gl.sortArtist();
-        assertEquals(gl.get(0).getSong(), song1);
+        assertEquals(gl.get(0).getSong(), song2);
         assertEquals(gl.get(1).getSong(), song3);
-        assertEquals(gl.get(2).getSong(), song2);
+        assertEquals(gl.get(2).getSong(), song1);
     }
 
 
