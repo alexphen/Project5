@@ -1,4 +1,4 @@
-package musicpreference;
+package prj5;
 
 public class SinglyLinkedList<E> {
 

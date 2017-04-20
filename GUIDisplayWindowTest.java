@@ -1,7 +1,7 @@
 /**
  * 
  */
-package musicpreference;
+package prj5;
 
 /**
  * @author aphen

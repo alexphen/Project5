@@ -1,7 +1,7 @@
 /**
  * 
  */
-package musicpreference;
+package prj5;
 
 import CS2114.TextShape;
 import java.awt.Color;
@@ -234,7 +234,7 @@ public class GUIDisplayWindow {
         else {
             placeGlyphs();
         }
-        key = new GUIKey(Category.Hobby);
+        key = new GUIKey(CategoryEnum.Hobby);
         addShapeList(key);
         started = true;
     }
@@ -248,7 +248,7 @@ public class GUIDisplayWindow {
         else {
             placeGlyphs();
         }
-        key = new GUIKey(Category.Major);
+        key = new GUIKey(CategoryEnum.Major);
         addShapeList(key);
         started = true;
     }
@@ -262,7 +262,7 @@ public class GUIDisplayWindow {
         else {
             placeGlyphs();
         }
-        key = new GUIKey(Category.Region);
+        key = new GUIKey(CategoryEnum.Region);
         addShapeList(key);
         started = true;
     }

@@ -1,4 +1,4 @@
-package musicpreference;
+package prj5;
 
 
 /**
@@ -49,4 +49,3 @@ public class PersonList extends DLList<Person> {
         }
     }
 }
-
