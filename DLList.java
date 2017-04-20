@@ -228,7 +228,15 @@ public class DLList<E> implements Iterable<E> {
         size--;
         return true;
     }
-    
+
+
+    /**
+     * Remove node withe data obj
+     * 
+     * @param obj
+     *            data searched for
+     * @return true if removed
+     */
     public boolean remove(E obj) {
         Node<E> current = head.next();
         while (!current.equals(tail)) {
