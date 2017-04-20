@@ -36,6 +36,15 @@ public class GlyphTest extends student.TestCase {
         Song song1 = glyph.getSong();
         assertEquals("Don't Stop Believing,Billy Joel,1925,HipHop", song1
             .toString());
+        glyph.setSort("A");
+        assertEquals("by Billy Joel", glyph.getSort());
+        glyph.setSort("Y");
+        assertEquals("Released: 1925", glyph.getSort());
+        glyph.setSort("G");
+        assertEquals("Genre: HipHop", glyph.getSort());
+        
+        
+        
         assertEquals("Don't Stop Believing Glyph", glyph.toString());
     }
 
