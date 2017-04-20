@@ -25,7 +25,7 @@ public class SongFileReader {
     /**
      * The constructor for SongFileReader
      * 
-     * @param the
+     * @param File
      *            file that is going to be read into the scanner
      */
     public SongFileReader(File file) {
@@ -38,7 +38,7 @@ public class SongFileReader {
         songList = new SongList();
 
     }
-
+    
 
     /**
      * Reads the song file, creates songs, then adds the song to a list of songs
