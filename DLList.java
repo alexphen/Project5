@@ -12,9 +12,25 @@ import java.util.NoSuchElementException;
  */
 public class DLList<E> implements Iterable<E> {
 
+    /**
+     * 
+     * @author Adam Tapp adam
+     * @version 04/20/2017
+     * @param <E>
+     *            the generic type of the data
+     */
     private static class Node<E> {
+        /**
+         * The next node
+         */
         private Node<E> next;
+        /**
+         * The previous node
+         */
         private Node<E> previous;
+        /**
+         * The Data in this node
+         */
         private E data;
 
 
@@ -89,10 +105,17 @@ public class DLList<E> implements Iterable<E> {
         }
     }
 
+    /**
+     * The number of entries in the list
+     */
     private int size;
-
+    /**
+     * The first node in this list
+     */
     private Node<E> head;
-
+    /**
+     * The last node in the list
+     */
     private Node<E> tail;
 
 
@@ -117,7 +140,7 @@ public class DLList<E> implements Iterable<E> {
 
 
     /**
-     * 
+     * Determines if the list is empty
      * @return true if the list is empty
      */
     public boolean isEmpty() {
@@ -126,7 +149,7 @@ public class DLList<E> implements Iterable<E> {
 
 
     /**
-     * 
+     * Returns the size of the list
      * @return size of the list
      */
     public int size() {
@@ -231,7 +254,7 @@ public class DLList<E> implements Iterable<E> {
 
 
     /**
-     * Remove node withe data obj
+     * Remove node with data obj
      * 
      * @param obj
      *            data searched for
@@ -320,8 +343,13 @@ public class DLList<E> implements Iterable<E> {
      *            generic type
      */
     public class DLListIterator<A> implements Iterator<E> {
-
+        /**
+         * The starting point of the List
+         */
         private int index;
+        /**
+         * Keeps track of where the node was removed
+         */
         private int removed = -1;
 
 
