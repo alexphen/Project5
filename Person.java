@@ -164,28 +164,26 @@ public class Person {
      *            the string that will determine the major
      */
     private void setMajor(String str) {
-
-        switch (str) {
-            case "Computer Science":
-                major = MajorEnum.COMPUTER_SCIENCE;
-                break;
-
-            case "Other Engineering":
-                major = MajorEnum.OTHER_ENGE;
-                break;
-
-            case "Math or CMDA":
-                major = MajorEnum.MATH_CMDA;
-                break;
-
-            case "Other":
-                major = MajorEnum.OTHER;
-                break;
-
-            default:
-                valid = false;
-                major = null;
+        if (str.equals("Computer Science")) {
+            major = MajorEnum.COMPUTER_SCIENCE;
         }
+
+        else if (str.equals("Other Engineering")) {
+            major = MajorEnum.OTHER_ENGE;
+        }
+        else if (str.equals("Math or CMDA")) {
+            major = MajorEnum.MATH_CMDA;
+        }
+
+        else if (str.equals("Other")) {
+            major = MajorEnum.OTHER;
+        }
+
+        else {
+            valid = false;
+            major = null;
+        }
+
     }
 
 
@@ -197,27 +195,27 @@ public class Person {
      */
     private void setState(String str) {
 
-        switch (str) {
-            case "Northeast":
-                state = StateEnum.NORTHEAST;
-                break;
-
-            case "Southeast":
-                state = StateEnum.SOUTHEAST;
-                break;
-
-            case "United States (other than Southeast or Northwest)":
-                state = StateEnum.OTHER_US;
-                break;
-
-            case "Outside of United States":
-                state = StateEnum.OTHER;
-                break;
-
-            default:
-                valid = false;
-                state = null;
+        if (str.equals("Northeast")) {
+            state = StateEnum.NORTHEAST;
         }
+
+        else if (str.equals("Southeast")) {
+            state = StateEnum.SOUTHEAST;
+        }
+
+        else if (str.equals(
+            "United States (other than Southeast or Northwest)")) {
+            state = StateEnum.OTHER_US;
+        }
+
+        else if (str.equals("Outside of United States")) {
+            state = StateEnum.OTHER;
+        }
+        else {
+            valid = false;
+            state = null;
+        }
+
     }
 
 
@@ -229,26 +227,22 @@ public class Person {
      */
     private void setHobby(String str) {
 
-        switch (str) {
-            case "reading":
-                hobby = HobbyEnum.READ;
-                break;
+        if (str.equals("reading")) {
+            hobby = HobbyEnum.READ;
+        }
 
-            case "art":
-                hobby = HobbyEnum.ART;
-                break;
-
-            case "sports":
-                hobby = HobbyEnum.SPORTS;
-                break;
-
-            case "music":
-                hobby = HobbyEnum.MUSIC;
-                break;
-
-            default:
-                valid = false;
-                state = null;
+        else if (str.equals("art")) {
+            hobby = HobbyEnum.ART;
+        }
+        else if (str.equals("sports")) {
+            hobby = HobbyEnum.SPORTS;
+        }
+        else if (str.equals("music")) {
+            hobby = HobbyEnum.MUSIC;
+        }
+        else {
+            valid = false;
+            state = null;
         }
     }
 
@@ -259,16 +253,14 @@ public class Person {
     private void fillAnswers() {
         while (scan.hasNext()) {
             String str = scan.next();
-            switch (str) {
-                case "Yes":
-                    answers.add(1);
-                    break;
-                case "No":
-                    answers.add(0);
-                    break;
-                default:
-                    answers.add(-1);
-                    break;
+            if (str.equals("Yes")) {
+                answers.add(1);
+            }
+            else if (str.equals("No")) {
+                answers.add(0);
+            }
+            else {
+                answers.add(-1);
             }
         }
 
