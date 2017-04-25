@@ -56,10 +56,10 @@ public class Input {
     public Input(File file, File file1) {
         sFR = new SongFileReader(file);
         pFR = new PersonFileReader(file1);
-        window = new GUIDisplayWindow();
         songList = readSongs();
         personList = readPeople();
         glyphList = new GlyphList();
+        window = new GUIDisplayWindow(glyphList);
         addSongValues();
 
     }
@@ -262,6 +262,7 @@ public class Input {
     }
 
 
+    @SuppressWarnings("unused")
     public static void main(String args0[]) {
         File personFile = new File(args0[0]);
         File songFile = new File(args0[1]);

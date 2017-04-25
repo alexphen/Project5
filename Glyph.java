@@ -1,7 +1,8 @@
+
 package prj5;
 
 import java.awt.Color;
-import java.util.NoSuchElementException;
+import java.awt.Window;
 import CS2114.Shape;
 import CS2114.TextShape;
 
@@ -14,13 +15,17 @@ import CS2114.TextShape;
 public class Glyph extends DLList<Shape> {
 
     /**
-     * The list of shapes for this glyph
+     * Int used for updating glyphs
      */
-    private DLList<Shape> glyphList;
-    /**
-     * String for sort
-     */
-    private String sort;
+    public static int rep;
+
+    private Shape border;
+    private Shape divider;
+    private TextShape title;
+    private TextShape subtitle;
+    private static String sort;
+    private DLList<Shape> glyph;
+
     /**
      * The song associated with this glyph
      */
@@ -45,7 +50,7 @@ public class Glyph extends DLList<Shape> {
     /**
      * The boolean for when the window is sorting by state
      */
-    private boolean state;
+    private boolean region;
 
     /**
      * The listen side of the top bar
@@ -88,46 +93,30 @@ public class Glyph extends DLList<Shape> {
     private Bar like4;
 
     private final int WIDTH = 200;
-    private final int HEIGHT = 200;
 
 
     /**
      * The constructor for the glyph class
-     * 
-     * @param song
-     *            is the song assiciated with this glyph
-     * @param x
-     *            is the x coordinate of this glyph
-     * @param y
-     *            is the y coordinate of this glyph
      */
     public Glyph(Song song, int x, int y) {
-
         this.song = song;
         listenLike = new int[8];
-        glyphList = new DLList<>();
-        Shape border = new Shape(x, y, WIDTH, HEIGHT, Color.WHITE);
-        border.setForegroundColor(Color.BLACK);
-        TextShape title = new TextShape(x, y + 10, song.getSongTitle());
-        title.move((WIDTH / 2) - (title.getWidth() / 2), 0);
-        title.setBackgroundColor(Color.WHITE);
-        setSort("A");
-        TextShape subtitle = new TextShape(x, y + 30, sort);
-        subtitle.setBackgroundColor(Color.WHITE);
-        subtitle.move((WIDTH / 2) - (title.getWidth() / 2), 0);
+        border = new Shape(x, y, 0, 0);
 
+        title = new TextShape(0, 0, song.getSongTitle());
+        title.setBackgroundColor(Color.WHITE);
+        subtitle = new TextShape(0, 0, sort);
+        setSort("A");
+        subtitle.setBackgroundColor(Color.WHITE);
+        this.setLocs();
+        this.update();
+
+        this.add(border);
         this.add(subtitle);
         this.add(title);
-        this.add(border);
+        this.add(divider);
     }
 
-
-    /**
-     * Sets the sort for this glyph
-     * 
-     * @param str
-     *            identifies what sort
-     */
 
     public void setSort(String str) {
         if (str.equals("A")) {
@@ -139,6 +128,7 @@ public class Glyph extends DLList<Shape> {
         else if (str.equals("G")) {
             sort = "Genre: " + this.getSong().getGenre();
         }
+        subtitle.setText(sort);
     }
 
 
@@ -153,71 +143,18 @@ public class Glyph extends DLList<Shape> {
 
 
     /**
+     * Returns border of Glyph
+     */
+    public Shape getBorder() {
+        return border;
+    }
+
+
+    /**
      * returns the song associated with this glyph
-     * @return String the song associated with this glyph
      */
     public String toString() {
         return song.getSongTitle() + " Glyph";
-    }
-
-
-    /**
-     * Get hobby, for testing purposes
-     * 
-     * @return boolean the value of hobby
-     */
-    public boolean getHobby() {
-        return hobby;
-    }
-
-
-    /**
-     * Get major, for testing purposes
-     * 
-     * @return boolean the value of major
-     */
-    public boolean getMajor() {
-        return major;
-    }
-
-
-    /**
-     * Get state, for testing purposes
-     * 
-     * @return boolean the value of state
-     */
-    public boolean getState() {
-        return state;
-    }
-
-
-    /**
-     * Gets the listenLike array, for testing purposes
-     * 
-     * @return int[] the ListenLike array
-     */
-    public int[] getListenLike() {
-        return listenLike;
-    }
-
-
-    /**
-     * Gets the listOfShapes, for testing purposes
-     * 
-     * @return DLList<Shape> the glyphList of shapes
-     */
-    public DLList<Shape> getGlyphShapes() {
-        return glyphList;
-    }
-
-
-    /**
-     * Getter for sort
-     * @return String 
-     *          the sort string
-     */
-    public String getSort() {
-        return sort;
     }
 
 
@@ -232,10 +169,41 @@ public class Glyph extends DLList<Shape> {
      *            2 for major
      *            3 for state
      */
-    public void update(int num) {
-        updateBools(num);
+    public void update() {
+        updateBools(rep);
         updateListenLike();
         updateBars();
+
+    }
+
+
+    /**
+     * @return Sort
+     */
+    public String getSort() {
+        return sort;
+    }
+
+
+    /**
+     * Sets the locations of the shapes in the Glyph
+     */
+    public void setLocs() {
+        divider = new Shape(border.getX() + (WIDTH / 2) - 5, border.getY() + 60,
+            10, 100, Color.BLACK);
+        title.moveTo(border.getX() + (WIDTH / 2) - (title.getWidth() / 2),
+            border.getY() + 10);
+        subtitle.moveTo(border.getX() + (WIDTH / 2) - (subtitle.getWidth() / 2),
+            border.getY() + 30);
+    }
+
+
+    /**
+     * Sets the starting location f the Glyph
+     */
+    public void setStart(int x, int y) {
+        border.setX(x);
+        border.setY(y);
     }
 
 
@@ -251,22 +219,22 @@ public class Glyph extends DLList<Shape> {
             case 1:
                 hobby = true;
                 major = false;
-                state = false;
+                region = false;
                 break;
             case 2:
                 hobby = false;
                 major = true;
-                state = false;
+                region = false;
                 break;
             case 3:
                 hobby = false;
                 major = false;
-                state = true;
+                region = true;
                 break;
             default:
                 hobby = false;
                 major = false;
-                state = false;
+                region = false;
                 break;
         }
     }
@@ -282,11 +250,8 @@ public class Glyph extends DLList<Shape> {
         else if (major) {
             listenLike = song.getMajor();
         }
-        else if (state) {
-            listenLike = song.getState();
-        }
         else {
-            listenLike = null;
+            listenLike = song.getState();
         }
     }
 
@@ -296,27 +261,32 @@ public class Glyph extends DLList<Shape> {
      * possibly need to change the bars in
      */
     private void updateBars() {
-        if (listenLike != null) {
-            listen1 = new Bar(listenLike[0]);
-            like1 = new Bar(listenLike[1]);
-            listen2 = new Bar(listenLike[2]);
-            like2 = new Bar(listenLike[3]);
-            listen3 = new Bar(listenLike[4]);
-            like3 = new Bar(listenLike[5]);
-            listen4 = new Bar(listenLike[6]);
-            like4 = new Bar(listenLike[7]);
+        listen1 = new Bar(listenLike[0], Color.pink);
+        listen1.moveTo(divider.getX() - listen1.getWidth(), border.getY() + 60);
+        like1 = new Bar(listenLike[1], Color.pink);
+        like1.moveTo(divider.getX() + divider.getWidth(), border.getY() + 60);
+        listen2 = new Bar(listenLike[2], Color.blue);
+        listen2.moveTo(divider.getX() - listen2.getWidth(), border.getY() + 85);
+        like2 = new Bar(listenLike[3], Color.blue);
+        like2.moveTo(divider.getX() + divider.getWidth(), border.getY() + 85);
+        listen3 = new Bar(listenLike[4], Color.orange);
+        listen3.moveTo(divider.getX() - listen3.getWidth(), border.getY()
+            + 110);
+        like3 = new Bar(listenLike[5], Color.orange);
+        like3.moveTo(divider.getX() + divider.getWidth(), border.getY() + 110);
+        listen4 = new Bar(listenLike[6], Color.green);
+        listen4.moveTo(divider.getX() - listen4.getWidth(), border.getY()
+            + 135);
+        like4 = new Bar(listenLike[7], Color.green);
+        like4.moveTo(divider.getX() + divider.getWidth(), border.getY() + 135);
 
-            glyphList.add(listen1);
-            glyphList.add(like1);
-            glyphList.add(listen2);
-            glyphList.add(like2);
-            glyphList.add(listen3);
-            glyphList.add(like3);
-            glyphList.add(listen4);
-            glyphList.add(like4);
-        }
-        else {
-            throw new NoSuchElementException();
-        }
+        this.add(listen1);
+        this.add(like1);
+        this.add(listen2);
+        this.add(like2);
+        this.add(listen3);
+        this.add(like3);
+        this.add(listen4);
+        this.add(like4);
     }
 }
