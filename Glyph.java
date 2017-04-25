@@ -19,6 +19,9 @@ public class Glyph extends DLList<Shape> {
      */
     public static int rep;
 
+    /**
+     * The shapes associated with this glyph
+     */
     private Shape border;
     private Shape divider;
     private TextShape title;
@@ -147,6 +150,39 @@ public class Glyph extends DLList<Shape> {
      */
     public Shape getBorder() {
         return border;
+    }
+
+
+    /**
+     * Get hobby, for testing purposes
+     * 
+     * @return boolean the value of hobby
+     *         Returns border of Glyph
+     */
+    public boolean getHobby() {
+        return hobby;
+    }
+
+
+    /**
+     * Get major, for testing purposes
+     * 
+     * @return boolean the value of major
+     *         returns the song associated with this glyph
+     */
+    public boolean getMajor() {
+        return major;
+    }
+
+
+    /**
+     * Get region for testing purposes
+     * 
+     * @return boolean the value of region
+     *         returns the song associated with this glyph
+     */
+    public boolean getRegion() {
+        return region;
     }
 
 
