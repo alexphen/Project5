@@ -40,14 +40,40 @@ public class Input {
      */
     private PersonFileReader pFR;
 
-    int readCount = 0;
-    int artCount = 0;
-    int sportsCount = 0;
-    int musicCount = 0;
-    int readCountLike = 0;
-    int artCountLike = 0;
-    int sportsCountLike = 0;
-    int musicCountLike = 0;
+    /**
+     * Counters for Hobby likes and listens
+     */
+    private int readCount = 0;
+    private int artCount = 0;
+    private int sportsCount = 0;
+    private int musicCount = 0;
+    private int readCountLike = 0;
+    private int artCountLike = 0;
+    private int sportsCountLike = 0;
+    private int musicCountLike = 0;
+
+    /**
+     * Counters for Major likes and listens
+     */
+    private int compSciCount = 0;
+    private int otherENGECount = 0;
+    private int mathCMDACount = 0;
+    private int otherCount = 0;
+    private int compSciCountLike = 0;
+    private int otherENGECountLike = 0;
+    private int mathCMDACountLike = 0;
+    private int otherCountLike = 0;
+    /**
+     * Counters for state likes and listens
+     */
+    private int northEastCount = 0;
+    private int southEastCount = 0;
+    private int otherUsCount = 0;
+    private int outsideUsCount = 0;
+    private int northEastCountLike = 0;
+    private int southEastCountLike = 0;
+    private int otherUsCountLike = 0;
+    private int outsideUsCountLike = 0;
 
 
     /**
@@ -200,21 +226,8 @@ public class Input {
             Glyph glyph = new Glyph(song, 0, 0);
             glyphList.add(glyph);
             perHobbies(song.getHobbies());
-
-            /*
-             * System.out.println("song title " + song.getSongTitle()
-             * + "\nsong artist " + song.getArtistName()
-             * + "\nsong genre " + song.getGenre()
-             * + "\nsong year " + song.getYearReleased()
-             * + "\nheard\nreading" + song.getHobbies()[0]
-             * + " art" + song.getHobbies()[2] +
-             * " sports" + song.getHobbies()[4]+
-             * " music" + song.getHobbies()[6] +
-             * "\nlikes\nreading" + song.getHobbies()[1] +
-             * " art" + song.getHobbies()[3] +
-             * " sports" + song.getHobbies()[5] +
-             * " music" + song.getHobbies()[7] + "\n");
-             */
+            perMajors(song.getMajor());
+            perRegion(song.getState());
 
         } // End song for
         glyphList.sortGenre();
@@ -223,6 +236,12 @@ public class Input {
     }
 
 
+    /**
+     * Creates the proper sized bars for hobby
+     * 
+     * @param hobbies
+     *            the int array that contains the values for hobby
+     */
     private void perHobbies(int[] hobbies) {
         if (readCount != 0) {
             double per = ((double)hobbies[0] / readCount) * 100;
@@ -261,6 +280,103 @@ public class Input {
 
     }
 
+
+    /**
+     * Creates the proper sized bars for hobby
+     * 
+     * @param hobbies
+     *            the int array that contains the values for hobby
+     */
+    private void perMajors(int[] majors) {
+        if (compSciCount != 0) {
+            double per = ((double)majors[0] / compSciCount) * 100;
+            double per1 = ((double)majors[1] / compSciCountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            majors[0] = x;
+            majors[1] = x1;
+        }
+
+        if (otherENGECount != 0) {
+            double per = ((double)majors[2] / otherENGECount) * 100;
+            double per1 = ((double)majors[3] / otherENGECountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            majors[2] = x;
+            majors[3] = x1;
+        }
+
+        if (mathCMDACount != 0) {
+            double per = ((double)majors[4] / mathCMDACount) * 100;
+            double per1 = ((double)majors[5] / mathCMDACountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            majors[4] = x;
+            majors[5] = x1;
+        }
+        if (otherCount != 0) {
+            double per = ((double)majors[6] / otherCount) * 100;
+            double per1 = ((double)majors[7] / otherCountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            majors[6] = x;
+            majors[7] = x1;
+        }
+
+    }
+
+
+    /**
+     * Creates the proper sized bars for region
+     * 
+     * @param region
+     *            the int array that contains the values for region
+     */
+    private void perRegion(int[] region) {
+        if (readCount != 0) {
+            double per = ((double)region[0] / northEastCount) * 100;
+            double per1 = ((double)region[1] / northEastCountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            region[0] = x;
+            region[1] = x1;
+        }
+
+        if (artCount != 0) {
+            double per = ((double)region[2] / southEastCount) * 100;
+            double per1 = ((double)region[3] / southEastCountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            region[2] = x;
+            region[3] = x1;
+        }
+
+        if (sportsCount != 0) {
+            double per = ((double)region[4] / otherUsCount) * 100;
+            double per1 = ((double)region[5] / otherUsCountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            region[4] = x;
+            region[5] = x1;
+        }
+        if (musicCount != 0) {
+            double per = ((double)region[6] / outsideUsCount) * 100;
+            double per1 = ((double)region[7] / outsideUsCountLike) * 100;
+            int x = (int)per;
+            int x1 = (int)per1;
+            region[6] = x;
+            region[7] = x1;
+        }
+
+    }
+
+
+    /**
+     * Main method that runs the program
+     * 
+     * @param args0
+     *            the array that contains the files needed for running
+     */
 
     @SuppressWarnings("unused")
     public static void main(String args0[]) {
