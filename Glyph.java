@@ -199,11 +199,6 @@ public class Glyph extends DLList<Shape> {
      * Updates the booleans
      * Updates the bars
      * 
-     * @param num
-     *            represents what bars need to be shown
-     *            1 for hobby
-     *            2 for major
-     *            3 for state
      */
     public void update() {
         updateBools(rep);
@@ -214,7 +209,8 @@ public class Glyph extends DLList<Shape> {
 
 
     /**
-     * @return Sort
+     * @return String
+     *          the value of sort
      */
     public String getSort() {
         return sort;
@@ -236,6 +232,10 @@ public class Glyph extends DLList<Shape> {
 
     /**
      * Sets the starting location f the Glyph
+     * @param x 
+     *          the x coordinate of the border
+     * @param y 
+     *          the y coordinate of the border
      */
     public void setStart(int x, int y) {
         border.setX(x);
