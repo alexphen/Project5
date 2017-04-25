@@ -184,20 +184,44 @@ public class Input {
 
                 switch (major) {
                     case COMPUTER_SCIENCE:
-                        song.getMajor()[0] += aInts.get(listenVal);
-                        song.getMajor()[1] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            compSciCount++;
+                            song.getMajor()[0] += aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            compSciCountLike++;
+                            song.getMajor()[1] += aInts.get(likeVal);
+                        }
                         break;
                     case OTHER_ENGE:
-                        song.getMajor()[2] += aInts.get(listenVal);
-                        song.getMajor()[3] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            otherENGECount++;
+                            song.getMajor()[2] += aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            otherENGECountLike++;
+                            song.getMajor()[3] += aInts.get(likeVal);
+                        }
                         break;
                     case MATH_CMDA:
-                        song.getMajor()[4] += aInts.get(listenVal);
-                        song.getMajor()[5] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            mathCMDACount++;
+                            song.getMajor()[4] += aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            mathCMDACountLike++;
+                            song.getMajor()[5] += aInts.get(likeVal);
+                        }
                         break;
                     case OTHER:
-                        song.getMajor()[6] += aInts.get(listenVal);
-                        song.getMajor()[7] += aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            otherCount++;
+                            song.getMajor()[6] += aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            otherCountLike++;
+                            song.getMajor()[7] += aInts.get(likeVal);
+                        }
                         break;
                     default:
                         break;
@@ -205,20 +229,45 @@ public class Input {
 
                 switch (state) {
                     case NORTHEAST:
-                        song.getState()[0] = aInts.get(listenVal);
-                        song.getState()[1] = aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            northEastCount++;
+                            song.getState()[0] = aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            northEastCountLike++;
+                            song.getState()[1] = aInts.get(likeVal);
+                        }
+
                         break;
                     case SOUTHEAST:
-                        song.getState()[2] = aInts.get(listenVal);
-                        song.getState()[3] = aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            southEastCount++;
+                            song.getState()[2] = aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            southEastCountLike++;
+                            song.getState()[3] = aInts.get(likeVal);
+                        }
                         break;
                     case OTHER_US:
-                        song.getState()[4] = aInts.get(listenVal);
-                        song.getState()[5] = aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            otherUsCount++;
+                            song.getState()[4] = aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            otherUsCountLike++;
+                            song.getState()[5] = aInts.get(likeVal);
+                        }
                         break;
                     case OTHER:
-                        song.getState()[6] = aInts.get(listenVal);
-                        song.getState()[7] = aInts.get(likeVal);
+                        if (aInts.get(listenVal) != -1) {
+                            outsideUsCount++;
+                            song.getState()[6] = aInts.get(listenVal);
+                        }
+                        if (aInts.get(likeVal) != -1) {
+                            outsideUsCountLike++;
+                            song.getState()[7] = aInts.get(likeVal);
+                        }
                         break;
                 }// End Switch 3
 
