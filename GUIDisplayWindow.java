@@ -29,12 +29,15 @@ public class GUIDisplayWindow {
     private Button region;
     private Button quit;
     private DLList<Shape> key;
+    private DLList<Shape> hKey;
+    private DLList<Shape> rKey;
+    private DLList<Shape> mKey;
     private GlyphList glyphs;
     private int page;
     private boolean started = false;
 
-    private static int STARTX = 100;
-    private static int STARTY = 100;
+    private static int STARTX = 50;
+    private static int STARTY = 50;
     private static int xIncrement = 350;
     private static int yIncrement = 200;
 
@@ -101,6 +104,9 @@ public class GUIDisplayWindow {
         window.addButton(quit, WindowSide.SOUTH);
         quit.onClick(this, "clickedQuit");
 
+        rKey = new GUIKey(CategoryEnum.Region);
+        hKey = new GUIKey(CategoryEnum.Hobby);
+        mKey = new GUIKey(CategoryEnum.Major);
     }
 
 
@@ -121,9 +127,15 @@ public class GUIDisplayWindow {
      * Places initial Glyphs on window
      */
     private void placeGlyphs() {
+        if (started) {
+            window.removeAllShapes();
+            addShapeList(key);
+        }
         if (page == glyphs.size() / 9) {
             for (int i = page * 9; i < glyphs.size() % 9; i++) {
                 Glyph curr = glyphs.get(i);
+                curr.update();
+                curr.setStart(STARTX, STARTY);
                 for (int k = 0; k < curr.size(); k++) {
                     curr.get(k).move(xIncrement * (i % 3), yIncrement * (i
                         / 3));
@@ -132,11 +144,14 @@ public class GUIDisplayWindow {
             }
         }
         else {
-            for (int i = page * 9; i < 9; i++) {
+            for (int i = page * 9; i < page * 9 + 9; i++) {
                 Glyph curr = glyphs.get(i);
+                curr.update();
+                curr.setStart(STARTX, STARTY);
                 for (int k = 0; k < curr.size(); k++) {
-                    curr.get(k).move(xIncrement * (i % 3), yIncrement * (i
-                        / 3));
+                    curr.get(k).move(xIncrement * (i % 3), yIncrement * ((i
+                        - page * 9) / 3));
+                    curr.setLocs();
                     addShapeList(curr);
                 }
             }
@@ -164,7 +179,7 @@ public class GUIDisplayWindow {
             }
         }
         else {
-            for (int i = page * 9; i < glyphs.size() % 9; i++) {
+            for (int i = page * 9; i < page * 9 + 9; i++) {
                 Glyph curr = glyphs.get(i);
                 curr.update();
                 curr.setStart(STARTX + xIncrement * (i % 3), STARTY + yIncrement
@@ -184,10 +199,17 @@ public class GUIDisplayWindow {
      */
     public void clickedPrev(Button button) {
         page--;
-        updateGlyphs();
+        for (int i = page * 9; i < glyphs.size() % 9; i++) {
+            Glyph curr = glyphs.get(i);
+            for (int k = 0; k < curr.size(); k++) {
+                curr.get(k).move(window.getWidth(), 0);
+            }
+        }
+        placeGlyphs();
         if (page == 0) {
             prev.disable();
         }
+        next.enable();
     }
 
 
@@ -199,11 +221,12 @@ public class GUIDisplayWindow {
      */
     public void clickedNext(Button button) {
         page++;
-        updateGlyphs();
+        placeGlyphs();
         prev.enable();
         if (page == glyphs.size() / 9) {
             next.disable();
         }
+
     }
 
 
@@ -216,6 +239,7 @@ public class GUIDisplayWindow {
     public void clickedArtistName(Button button) {
         glyphs.sortArtist();
         page = 0;
+        prev.disable();
         glyphs.setSorts("A");
         if (started) {
             updateGlyphs();
@@ -233,6 +257,7 @@ public class GUIDisplayWindow {
     public void clickedSongTitle(Button button) {
         glyphs.sortTitle();
         page = 0;
+        prev.disable();
         glyphs.setSorts("A");
         if (started) {
             updateGlyphs();
@@ -249,6 +274,7 @@ public class GUIDisplayWindow {
     public void clickedReleaseYear(Button button) {
         glyphs.sortYear();
         page = 0;
+        prev.disable();
         glyphs.setSorts("Y");
         if (started) {
             updateGlyphs();
@@ -265,6 +291,7 @@ public class GUIDisplayWindow {
     public void clickedGenre(Button button) {
         glyphs.sortGenre();
         page = 0;
+        prev.disable();
         glyphs.setSorts("G");
         if (started) {
             updateGlyphs();
@@ -287,7 +314,7 @@ public class GUIDisplayWindow {
         else {
             placeGlyphs();
         }
-        key = new GUIKey(CategoryEnum.Hobby);
+        key = hKey;
         addShapeList(key);
         started = true;
     }
@@ -308,7 +335,7 @@ public class GUIDisplayWindow {
         else {
             placeGlyphs();
         }
-        key = new GUIKey(CategoryEnum.Major);
+        key = mKey;
         addShapeList(key);
         started = true;
     }
@@ -329,7 +356,7 @@ public class GUIDisplayWindow {
         else {
             placeGlyphs();
         }
-        key = new GUIKey(CategoryEnum.Region);
+        key = rKey;
         addShapeList(key);
         started = true;
     }
