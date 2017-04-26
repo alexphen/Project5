@@ -126,6 +126,22 @@ public class Input {
             artCountLike = 0;
             sportsCountLike = 0;
             musicCountLike = 0;
+            compSciCount = 0;
+            otherENGECount = 0;
+            mathCMDACount = 0;
+            otherCount = 0;
+            compSciCountLike = 0;
+            otherENGECountLike = 0;
+            mathCMDACountLike = 0;
+            otherCountLike = 0;
+            northEastCount = 0;
+            southEastCount = 0;
+            otherUsCount = 0;
+            outsideUsCount = 0;
+            northEastCountLike = 0;
+            southEastCountLike = 0;
+            otherUsCountLike = 0;
+            outsideUsCountLike = 0;
             for (int j = 0; j < personList.size(); j++) {
                 Person person = personList.get(j);
                 ArrayList<Integer> aInts = person.getAnswers();
@@ -231,42 +247,42 @@ public class Input {
                     case NORTHEAST:
                         if (aInts.get(listenVal) != -1) {
                             northEastCount++;
-                            song.getState()[0] = aInts.get(listenVal);
+                            song.getState()[0] += aInts.get(listenVal);
                         }
                         if (aInts.get(likeVal) != -1) {
                             northEastCountLike++;
-                            song.getState()[1] = aInts.get(likeVal);
+                            song.getState()[1] += aInts.get(likeVal);
                         }
 
                         break;
                     case SOUTHEAST:
                         if (aInts.get(listenVal) != -1) {
                             southEastCount++;
-                            song.getState()[2] = aInts.get(listenVal);
+                            song.getState()[2] += aInts.get(listenVal);
                         }
                         if (aInts.get(likeVal) != -1) {
                             southEastCountLike++;
-                            song.getState()[3] = aInts.get(likeVal);
+                            song.getState()[3] += aInts.get(likeVal);
                         }
                         break;
                     case OTHER_US:
                         if (aInts.get(listenVal) != -1) {
                             otherUsCount++;
-                            song.getState()[4] = aInts.get(listenVal);
+                            song.getState()[4] += aInts.get(listenVal);
                         }
                         if (aInts.get(likeVal) != -1) {
                             otherUsCountLike++;
-                            song.getState()[5] = aInts.get(likeVal);
+                            song.getState()[5] += aInts.get(likeVal);
                         }
                         break;
                     case OTHER:
                         if (aInts.get(listenVal) != -1) {
                             outsideUsCount++;
-                            song.getState()[6] = aInts.get(listenVal);
+                            song.getState()[6] += aInts.get(listenVal);
                         }
                         if (aInts.get(likeVal) != -1) {
                             outsideUsCountLike++;
-                            song.getState()[7] = aInts.get(likeVal);
+                            song.getState()[7] += aInts.get(likeVal);
                         }
                         break;
                 }// End Switch 3
@@ -382,16 +398,16 @@ public class Input {
      *            the int array that contains the values for region
      */
     private void perRegion(int[] region) {
-        if (readCount != 0) {
-            double per = ((double)region[0] / northEastCount) * 100;
+        if (northEastCount != 0) {
+            double per = ((double)region[0] / (northEastCount / 100));
             double per1 = ((double)region[1] / northEastCountLike) * 100;
-            int x = (int)per;
-            int x1 = (int)per1;
+            int x = (int)Math.round(per);
+            int x1 = (int)Math.round(per1);
             region[0] = x;
             region[1] = x1;
         }
 
-        if (artCount != 0) {
+        if (southEastCount != 0) {
             double per = ((double)region[2] / southEastCount) * 100;
             double per1 = ((double)region[3] / southEastCountLike) * 100;
             int x = (int)per;
@@ -400,7 +416,7 @@ public class Input {
             region[3] = x1;
         }
 
-        if (sportsCount != 0) {
+        if (otherUsCount != 0) {
             double per = ((double)region[4] / otherUsCount) * 100;
             double per1 = ((double)region[5] / otherUsCountLike) * 100;
             int x = (int)per;
@@ -408,7 +424,7 @@ public class Input {
             region[4] = x;
             region[5] = x1;
         }
-        if (musicCount != 0) {
+        if (outsideUsCount != 0) {
             double per = ((double)region[6] / outsideUsCount) * 100;
             double per1 = ((double)region[7] / outsideUsCountLike) * 100;
             int x = (int)per;
